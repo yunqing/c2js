@@ -112,7 +112,7 @@ ifPart returns [String name]
 	name = null;
 }
 	:	'if' '(' exprvalue ')' '{' block '}'
-		{$name = "if(" + $exprvalue.name + ") {" + "\n" + tabs.tab() +  $block.name + tabs.tab() + "}";}
+		{$name = "if(" + $exprvalue.name + ") {" + "\n" + "\t" +  $block.name + "\t" + "}";}
 	;
 	
 elsePart returns [String name]
@@ -130,8 +130,8 @@ forStat returns [String name]
 }
 	:	'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}'
 		{
-			tabs.addTab();
-			$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ") {\n" + tabs.tab() + $block.name +  tabs.tab() + "}";
+			
+			$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ") {\n" + "\t" + $block.name +  "\t" + "}";
 			
 		}
 	;
@@ -156,8 +156,8 @@ whileStat returns [String name]
 }
 	:	'while' '(' expr ')' '{' block '}'
 		{
-			tabs.addTab();
-			$name = "while(" + $expr.name + ") {\n" + tabs.tab()  + $block.name + tabs.tab() + "}";
+			
+			$name = "while(" + $expr.name + ") {\n" + "\t"  + $block.name + "\t" + "}";
 			
 		}
 	;
@@ -179,7 +179,7 @@ stat returns [String name]
 }
 	:	type decVariable
 		{
-			$name = tabs.tab() + $type.name + " " + $decVariable.name + "\n";
+			$name = "\t" + $type.name + " " + $decVariable.name + "\n";
 			CurVariable.type = $type.name;
 			VariableList.add(CurVariable);
 
@@ -187,35 +187,35 @@ stat returns [String name]
 	|	ieStat
 		{
 			
-			$name = tabs.tab()  + $ieStat.name + "\n";
+			$name = "\t"  + $ieStat.name + "\n";
 			
 		}
 	|	forStat
 		{
 			
-			$name = tabs.tab()  + $forStat.name + "\n";
-			tabs.removeTab();
+			$name = "\t"  + $forStat.name + "\n";
+			
 		}
 	|	whileStat
 		{
 			
-			$name = tabs.tab()  + $whileStat.name + "\n";
-			tabs.removeTab();
+			$name = "\t"  + $whileStat.name + "\n";
+			
 		}
 	|	callFunction ';'
 		{
 			
-			$name = tabs.tab()  + $callFunction.name + ";\n";
+			$name = "\t"  + $callFunction.name + ";\n";
 		}
 	|	'return' returnSentence ';'
 		{
 			
-			$name = tabs.tab()  + "return " + $returnSentence.name + ";\n";
+			$name = "\t"  + "return " + $returnSentence.name + ";\n";
 		}
 	|	normalExp ';'
 		{
 			
-			$name = tabs.tab()  + $normalExp.name + ";\n";
+			$name = "\t"  + $normalExp.name + ";\n";
 		}
 	|	LINE_COMMENT
 		{
