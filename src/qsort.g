@@ -3,14 +3,30 @@ grammar qsort;
 @members{
 	ArrayList<String> FunctionName = new ArrayList();
 	ArrayList<String> FunctionType = new ArrayList();
-	ArrayList<String> FunctionError = new ArrayList();
 	ArrayList<String> VariableError = new ArrayList();
 	ArrayList<String> ClassError = new ArrayList();
-	ClassStruct CurClass;
 	Variable CurVariable = new Variable();
-	Function CurFunction;
-	
-	boolean isPublic = false;
+
+	class TabController {
+		ArrayList<String> tabList = new ArrayList();
+		public void addTab() {
+			tabList.add("\t");
+		}
+		public void removeTab() {
+			if (tabList.size() == 0) {
+				return;
+			}
+			tabList.remove(tabList.size() - 1);
+		}
+		public String tab() {
+			String temp = "";
+			for (int i = 0; i < tabList.size(); i++) {
+				temp += tabList.get(i);
+			}
+			return temp;
+		}
+	};
+	TabController tabs = new TabController();
 	class Variable
 	{
 		String name;
@@ -50,47 +66,6 @@ program
 				for(String i : VariableError)
 					System.out.println(i);
 			}
-			if(FunctionError.size() != 0)
-			{
-				for(String i : FunctionError)
-				{
-					boolean isFound = false;
-					for(Function j : FunctionList)
-					{
-						if(j.name.equals(i))
-						{
-							isFound = true;
-							break;
-						}
-					}
-					if(!isFound)
-					{
-						System.out.println("Cannot find Function:");
-						System.out.println(i);
-					}
-				}
-					
-			}
-			if(ClassError.size() != 0)
-			{
-				for(String i : ClassError)
-				{
-					boolean isFound = false;
-					for(ClassStruct j : ClassList)
-					{
-						if(j.ClassName.equals(i))
-						{
-							isFound = true;
-							break;
-						}
-					}
-					if(!isFound)
-					{
-						System.out.println("Cannot find class:");
-						System.out.println(i);
-					}
-				}
-			}
 		}
 	;
 
@@ -104,34 +79,14 @@ declarations returns [String name]
 	|	{$name = "";}
 	;
 
-classDeclaration returns [String name]
-@init{
-	name = null;
-}
-	:	type classFunctionVariable
-		{
-			$name = "\t" + $classFunctionVariable.name + "\n";
-		}
-	|	constructFunction
-		{
-			//$name = $constructFunction.name + "\n";
-			$name = $constructFunction.initial + "\n";
-			CurClass.initial = $constructFunction.initial;
-		}
-	|	LINE_COMMENT 
-		{$name = "";}
-	|	COMMENT 
-		{$name = "";}
-	;
-	
 	
 declaration returns [String name]
 @init{
 	name = null;
 }
-	:	classDefine
-		{$name = $classDefine.name + "\n";}
-	|	type functionVariable
+	:	//classDefine
+		//{$name = $classDefine.name + "\n";} |
+		type functionVariable
 		{
 			$name = $functionVariable.name + "\n";
 			CurVariable.type = $type.name;
@@ -143,120 +98,6 @@ declaration returns [String name]
 		{$name = "";}
 	;
 
-//public
-	
-classDefine returns [String name]
-@init{
-	name = null;
-}
-	:	'class' className classImplement
-		{	
-			$name = "function " + $className.name + $classImplement.para + "\n" + $classImplement.name;
-			ClassList.add(CurClass);
-		}
-	;	
-	
-className returns [String name]
-@init{
-	name = null;
-}
-	:	ID
-		{
-			$name = $ID.text;
-			CurClass = new ClassStruct();
-			CurClass.ClassName = $ID.text;
-		}
-	;
-
-classImplement returns [String name, String para]
-@init{
-	$name = null;
-	$para = "";
-}
-	/*:	'{' privateBlock constructFunction publicBlock '}' ';'
-		{
-			$name = "{\n" + $privateBlock.name + "\n" + $constructFunction.initial  + $publicBlock.name + "};\n";
-			
-		}*/
-	:	'{' classBlock '}' ';'
-		{
-			$name = "{\n" + $classBlock.name + "};\n";
-			$para = CurClass.ConstructFunctionPara;
-		}
-	;
-
-classBlock returns [String name]
-@init{
-	name = null;
-}
-	:	classStat a=classBlock
-		{
-			$name = $classStat.name + $a.name;
-		}
-	|	{
-			$name = "";
-		}
-	;
-
-classStat returns [String name]
-@init{
-	name = null;
-}
-	:	classDeclaration
-		{
-			$name = $classDeclaration.name;
-		}
-	|	'public' ':'
-		{
-			$name = "\n";
-			isPublic = true;
-		}
-	|	'private' ':'
-		{
-			$name = "\n";
-			isPublic = false;
-		}
-	;
-
-constructFunction returns [String name, String para, String initial]
-@init{
-	$name = null;
-	$para = null;
-	$initial = null;
-}
-	:	decFunction
-		{
-			$name = "this." + $decFunction.funname + "=function" + $decFunction.para;
-			$para = $decFunction.justpara;
-			CurClass.ConstructFunctionPara = $para;
-			$initial = $decFunction.initial;
-		}
-	;
-
-constructObject returns [String name]
-@init{
-	name = null;
-}
-	:	ID callNameInObject ';'
-		{
-			$name = "var " + $callNameInObject.var + " = new " +  $ID.text + $callNameInObject.para;
-			String classname = $ID.text;
-			boolean isFound = false;
-			for(ClassStruct i: ClassList)
-			{
-				if(i.ClassName.equals(classname))
-				{
-					isFound = true;
-					break;
-				}
-			}
-			if(!isFound)
-			{
-				if(!ClassError.contains(classname))
-					ClassError.add(classname);
-			}
-		}
-	; 
 
 ieStat returns [String name]
 @init{
@@ -271,7 +112,7 @@ ifPart returns [String name]
 	name = null;
 }
 	:	'if' '(' exprvalue ')' '{' block '}'
-		{$name = "if(" + $exprvalue.name + ")" + "\n\t{\n" +"\t" +  $block.name + "\t}";}
+		{$name = "if(" + $exprvalue.name + ") {" + "\n" + tabs.tab() +  $block.name + tabs.tab() + "}";}
 	;
 	
 elsePart returns [String name]
@@ -288,7 +129,11 @@ forStat returns [String name]
 	name = null;
 }
 	:	'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}'
-		{$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ")\n\t{\n" + $block.name + "\t}";}
+		{
+			tabs.addTab();
+			$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ") {\n" + tabs.tab() + $block.name +  tabs.tab() + "}";
+			
+		}
 	;
 
 forPara returns [String name]
@@ -310,7 +155,11 @@ whileStat returns [String name]
 	name = null;
 }
 	:	'while' '(' expr ')' '{' block '}'
-		{$name = "while(" + $expr.name + ")\n\t{\n" + $block.name + "\t}";}
+		{
+			tabs.addTab();
+			$name = "while(" + $expr.name + ") {\n" + tabs.tab()  + $block.name + tabs.tab() + "}";
+			
+		}
 	;
 
 block returns [String name]
@@ -319,7 +168,9 @@ block returns [String name]
 }
 	:	stat a=block
 		{$name = $stat.name + $a.name;}
-	|	{$name = "";}
+	|	{
+			$name = "";
+		}
 	;
 
 stat returns [String name]
@@ -328,28 +179,52 @@ stat returns [String name]
 }
 	:	type decVariable
 		{
-			$name = "\t" + $type.name + " " + $decVariable.name + "\n";
+			$name = tabs.tab() + $type.name + " " + $decVariable.name + "\n";
 			CurVariable.type = $type.name;
 			VariableList.add(CurVariable);
+
 		}
-	|	constructObject
-		{$name = "\t" + $constructObject.name + "\n";}
 	|	ieStat
-		{$name = "\t" + $ieStat.name + "\n";}
+		{
+			
+			$name = tabs.tab()  + $ieStat.name + "\n";
+			
+		}
 	|	forStat
-		{$name = "\t" + $forStat.name + "\n";}
+		{
+			
+			$name = tabs.tab()  + $forStat.name + "\n";
+			tabs.removeTab();
+		}
 	|	whileStat
-		{$name = "\t" + $whileStat.name + "\n";}
+		{
+			
+			$name = tabs.tab()  + $whileStat.name + "\n";
+			tabs.removeTab();
+		}
 	|	callFunction ';'
-		{$name = "\t" + $callFunction.name + ";\n";}
+		{
+			
+			$name = tabs.tab()  + $callFunction.name + ";\n";
+		}
 	|	'return' returnSentence ';'
-		{$name = "\t" + "return " + $returnSentence.name + ";\n";}
+		{
+			
+			$name = tabs.tab()  + "return " + $returnSentence.name + ";\n";
+		}
 	|	normalExp ';'
-		{$name = "\t" + $normalExp.name + ";\n";}
+		{
+			
+			$name = tabs.tab()  + $normalExp.name + ";\n";
+		}
 	|	LINE_COMMENT
-		{$name = "";}
+		{
+			$name = "";
+		}
 	|	COMMENT 
-		{$name = "";}
+		{
+			$name = "";
+		}
 	;
 
 functionVariable returns [String name]
@@ -364,64 +239,6 @@ functionVariable returns [String name]
 		}
 	;
 
-classFunctionVariable returns [String name]
-@init{
-	$name = null;
-}
-	:	decFunction
-		{
-			if(isPublic)
-			{
-				$name = "this." + $decFunction.funname + "=function" + $decFunction.para;
-				Function CurFunction = new Function();
-				CurFunction.name = $decFunction.funname;
-				CurFunction.classStr = CurClass.ClassName;
-				CurFunction.flag = isPublic;
-				CurFunction.paraString = $decFunction.para;
-				String[] tempparas = CurFunction.paraString.split(",");
-				for(String i: tempparas)
-				{
-					CurFunction.paras.add(i);
-				}
-				FunctionList.add(CurFunction);
-			}
-			else
-			{
-				$name = "function " + $decFunction.name;
-				Function CurFunction = new Function();
-				CurFunction.name = $decFunction.funname;
-				CurFunction.classStr = CurClass.ClassName;
-				CurFunction.flag = isPublic;
-				CurFunction.paraString = $decFunction.para;
-				String[] tempparas = CurFunction.paraString.split(",");
-				for(String i: tempparas)
-				{
-					CurFunction.paras.add(i);
-				}
-				FunctionList.add(CurFunction);
-			}
-		}
-	|	decVariable
-		{
-			if(isPublic)
-			{
-				$name = "this." + $decVariable.name;
-				CurVariable = new Variable();
-				CurVariable.name = $decVariable.variableName;
-				CurVariable.classStr = CurClass.ClassName;
-				CurVariable.flag = isPublic;
-			}
-			else
-			{
-				$name = "var " + $decVariable.name;
-				Variable CurVariable = new Variable();
-				CurVariable.name = $decVariable.variableName;
-				CurVariable.classStr = CurClass.ClassName;
-				CurVariable.flag = isPublic;
-			}
-		}
-	;
-	
 decFunction returns [String name, String para, String funname, String initial, String justpara]
 @init{
 	$name = null;
@@ -574,26 +391,10 @@ callName returns [String name, String subname]
 			int k  = FunctionName.indexOf($ID.text);
 			int index = 0;
 			boolean isPub = true;
-			boolean isFound = false;
-			for(Function i : FunctionList)
-			{
-				if(i.name.equals($ID.text+ "_" + $callParameter.paranum))
-				{
-					isPub = i.flag;
-					isFound = true;
-					break;
-				}
-				index++;
-			}
-			if(!isFound)
-			{
-				if(!FunctionError.contains($ID.text+ "_" + $callParameter.paranum))
-					FunctionError.add($ID.text+ "_" + $callParameter.paranum);
-			}
 			if ((k >= 0) && (FunctionType.get(k) == "int&"))
 			{
 				if(isPub)
-					$name = "var temp = this." + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 				else
 					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 			}
@@ -601,7 +402,7 @@ callName returns [String name, String subname]
 			{
 				if(isPub)
 				{
-					$name = "this." + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = "" + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
 				}
 				else
 				{
@@ -729,7 +530,7 @@ exprvalue returns [String name]
 	|	'-' expr
 		{$name = "-" + $expr.name;}
 	|	'{'	INT ints '}'
-		{$name = "new Array(" + $INT.text + $ints.name + ")";}
+		{$name = "[" + $INT.text + $ints.name + "]";}
 	;
 
 expr returns [String name]
