@@ -1,5 +1,5 @@
 int partition(int* a, int l, int h) {  
-	int temp;
+	int temp = 0;
 	int low = l;
 	int high = h;
 	int pivotkey = a[low];
@@ -29,7 +29,7 @@ void qsort(int* a, int low, int high) {
 	}
 }
 
-int main(){
+int main() {
 	int a[] = {1,4,7,2,8,10,3,6,5,9};
 	int n = 10;   
 	qsort(a, 0, n-1);
