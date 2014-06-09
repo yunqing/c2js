@@ -8,13 +8,16 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class PyFormatter {
 	public String m_fileString = "";
-	public String[] m_lines;
+	public List<String> m_lines = new Vector<>();
 	public int m_tabsNum;
 	public String m_blockEndStr = "";
 	public PyFormatter(String content, String blockEnd) {
@@ -24,9 +27,9 @@ public class PyFormatter {
 	}
 	public void format() {
 		toLines(m_fileString);
-		for (int i = 0; i < m_lines.length; i++) {
-			m_lines[i] = getTabs(m_tabsNum) + m_lines[i];
-			String thisLine = m_lines[i].trim();
+		for (int i = 0; i < m_lines.size(); i++) {
+			m_lines.set(i, getTabs(m_tabsNum) + m_lines.get(i));
+			String thisLine = m_lines.get(i).trim();
 			if (thisLine.length() == 0) {
 				continue;
 			}
@@ -39,8 +42,8 @@ public class PyFormatter {
 			if ((hasWhile || hasIf || hasFor || hasDef) && hasColon) {
 				m_tabsNum += 1;
 			}
-			if (m_lines[i].contains(m_blockEndStr)) {
-				String string = m_lines[i];
+			if (m_lines.get(i).contains(m_blockEndStr)) {
+				String string = m_lines.get(i);
 				Pattern pattern = Pattern.compile(m_blockEndStr); //case insensitive, use [g] for only lower
 				Matcher matcher = pattern.matcher(string);
 				int count = 0;
@@ -48,15 +51,23 @@ public class PyFormatter {
 					count++;
 				}
 				m_tabsNum -= count;
-				m_lines[i] = m_lines[i].replaceAll(m_blockEndStr, "");
+				if (m_lines.get(i).replaceAll("\\s", "").matches("^[;]+$")) {
+					m_lines.set(i, ";");
+				}
+				else {
+					m_lines.set(i, m_lines.get(i).replaceAll(m_blockEndStr, ""));
+				}
+				
 			}
 		}
 	}
 	public String formatted() {
 		String resultStr = "";
 		for (String str: m_lines) {
-			resultStr += str;
-			resultStr += "\n";
+			if (str.equals(";") == false) {
+				resultStr += str;
+				resultStr += "\n";
+			}
 		}
 		return resultStr.substring(0, resultStr.length()-1);
 	}
@@ -65,7 +76,7 @@ public class PyFormatter {
 		
 	}
 	private void toLines(String content) {
-		m_lines = content.split("\n");
+		m_lines = new Vector<>(Arrays.asList(content.split("\n")));
 	}
 	private String getTabs(int num) {
 		String result = "";
