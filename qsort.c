@@ -32,6 +32,6 @@ void qsort(int* a, int low, int high) {
 int main(){
 	int a[] = {1,4,7,2,8,10,3,6,5,9};
 	int n = 10;   
-	qsort(a, 0, 9);
+	qsort(a, 0, n-1);
 	return 0;
 }
