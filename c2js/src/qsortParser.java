@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src\\qsort.g 2014-06-09 00:39:22
+// $ANTLR 3.4 src\\qsort.g 2014-06-09 18:34:04
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -234,7 +234,7 @@ public class qsortParser extends Parser {
                     state._fsp--;
 
 
-                    name = declaration3 + " " + a;
+                    name = declaration3 + "" + a;
 
                     }
                     break;
@@ -1445,10 +1445,10 @@ public class qsortParser extends Parser {
 
 
             			retval.ownname = (ID35!=null?ID35.getText():null);
-            			retval.name = (ID35!=null?ID35.getText():null) + "_" + (decParameter36!=null?decParameter36.paranum:0) + "(" + (decParameter36!=null?decParameter36.name:null) + ")";
+            			retval.name = (ID35!=null?ID35.getText():null) + "(" + (decParameter36!=null?decParameter36.name:null) + ")";
             			retval.para = "(" + (decParameter36!=null?decParameter36.name:null) + ")";
             			retval.p = (decParameter36!=null?decParameter36.name:null);
-            			retval.funname = (ID35!=null?ID35.getText():null) + "_" + (decParameter36!=null?decParameter36.paranum:0);
+            			retval.funname = (ID35!=null?ID35.getText():null);// + "_" + (decParameter36!=null?decParameter36.paranum:0);
             			retval.paraType = (decParameter36!=null?decParameter36.paraType:null);
             		
 
@@ -1690,7 +1690,7 @@ public class qsortParser extends Parser {
 
 
 
-                    			retval.name = " ," + (decFormalPara41!=null?decFormalPara41.name:null) + (a!=null?a.name:null);
+                    			retval.name = ", " + (decFormalPara41!=null?decFormalPara41.name:null) + (a!=null?a.name:null);
                     			retval.paranum = (decFormalPara41!=null?decFormalPara41.paranum:0) + (a!=null?a.paranum:0);
                     			retval.othername = (decFormalPara41!=null?decFormalPara41.name:null);
                     		
@@ -1984,21 +1984,21 @@ public class qsortParser extends Parser {
             			if ((k >= 0) && (FunctionType.get(k) == "int&"))
             			{
             				if(isPub)
-            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
             				else
-            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
             			}
             			else
             			{
             				if(isPub)
             				{
-            					retval.name = "" + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            					retval.name = "" + (ID49!=null?ID49.getText():null) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
             				}
             				else
             				{
-            					retval.name = (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            					retval.name = (ID49!=null?ID49.getText():null) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
             				}
-            				retval.subname = (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            				retval.subname = (ID49!=null?ID49.getText():null) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
             			}
             		
 
@@ -2301,7 +2301,7 @@ public class qsortParser extends Parser {
 
 
 
-                    			retval.name = "," + (callFormalPara56!=null?callFormalPara56.name:null) + (a!=null?a.name:null);
+                    			retval.name = ", " + (callFormalPara56!=null?callFormalPara56.name:null) + (a!=null?a.name:null);
                     			retval.paranum += (callFormalPara56!=null?callFormalPara56.paranum:0) + (a!=null?a.paranum:0);
                     			retval.othername = (callFormalPara56!=null?callFormalPara56.name:null);
                     		
@@ -2583,7 +2583,7 @@ public class qsortParser extends Parser {
                     state._fsp--;
 
 
-                    name = "=" + exprvalue59;
+                    name = " = " + exprvalue59;
 
                     }
                     break;
@@ -3505,7 +3505,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,18,FOLLOW_18_in_operator1331); 
 
-                    name = "+";
+                    name = " + ";
 
                     }
                     break;
@@ -3514,7 +3514,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,22,FOLLOW_22_in_operator1340); 
 
-                    name = "-";
+                    name = " - ";
 
                     }
                     break;
@@ -3523,7 +3523,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,16,FOLLOW_16_in_operator1349); 
 
-                    name = "*";
+                    name = " * ";
 
                     }
                     break;
@@ -3532,7 +3532,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,26,FOLLOW_26_in_operator1358); 
 
-                    name = "/";
+                    name = " / ";
 
                     }
                     break;
@@ -3541,7 +3541,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,36,FOLLOW_36_in_operator1371); 
 
-                    name = "^";
+                    name = " ^ ";
 
                     }
                     break;
@@ -3550,7 +3550,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,12,FOLLOW_12_in_operator1380); 
 
-                    name = "&";
+                    name = " & ";
 
                     }
                     break;
@@ -3559,7 +3559,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,11,FOLLOW_11_in_operator1389); 
 
-                    name = "&&";
+                    name = " && ";
 
                     }
                     break;
@@ -3568,7 +3568,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,49,FOLLOW_49_in_operator1398); 
 
-                    name = "||";
+                    name = " || ";
 
                     }
                     break;
@@ -3577,7 +3577,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,20,FOLLOW_20_in_operator1407); 
 
-                    name = "+=";
+                    name = " += ";
 
                     }
                     break;
@@ -3586,7 +3586,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,24,FOLLOW_24_in_operator1416); 
 
-                    name = "-=";
+                    name = " -= ";
 
                     }
                     break;
@@ -3595,7 +3595,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,17,FOLLOW_17_in_operator1425); 
 
-                    name = "*=";
+                    name = " *= ";
 
                     }
                     break;
@@ -3604,7 +3604,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,27,FOLLOW_27_in_operator1434); 
 
-                    name = "/=";
+                    name = " /= ";
 
                     }
                     break;
@@ -3613,7 +3613,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,37,FOLLOW_37_in_operator1447); 
 
-                    name = "^=";
+                    name = " ^= ";
 
                     }
                     break;
@@ -3622,7 +3622,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,13,FOLLOW_13_in_operator1456); 
 
-                    name = "&=";
+                    name = " &= ";
 
                     }
                     break;
@@ -3631,7 +3631,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,31,FOLLOW_31_in_operator1465); 
 
-                    name = "=";
+                    name = " = ";
 
                     }
                     break;
@@ -3640,7 +3640,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,32,FOLLOW_32_in_operator1474); 
 
-                    name = ">";
+                    name = " > ";
 
                     }
                     break;
@@ -3649,7 +3649,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,33,FOLLOW_33_in_operator1483); 
 
-                    name = ">=";
+                    name = " >= ";
 
                     }
                     break;
@@ -3658,7 +3658,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,29,FOLLOW_29_in_operator1492); 
 
-                    name = "<";
+                    name = " < ";
 
                     }
                     break;
@@ -3667,7 +3667,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,30,FOLLOW_30_in_operator1501); 
 
-                    name = "<=";
+                    name = " <= ";
 
                     }
                     break;
@@ -3676,7 +3676,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,10,FOLLOW_10_in_operator1510); 
 
-                    name = "!=";
+                    name = " != ";
 
                     }
                     break;
@@ -3805,7 +3805,7 @@ public class qsortParser extends Parser {
                     state._fsp--;
 
 
-                    name = "," + (INT82!=null?INT82.getText():null) + a;
+                    name = ", " + (INT82!=null?INT82.getText():null) + a;
 
                     }
                     break;
