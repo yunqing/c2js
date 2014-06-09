@@ -75,7 +75,7 @@ declarations returns [String name]
 	name = null;
 }
 	: 	declaration a=declarations
-		{$name = $declaration.name + " " + $a.name;}
+		{$name = $declaration.name + "" + $a.name;}
 	|	{$name = "";}
 	;
 
@@ -112,7 +112,7 @@ ifPart returns [String name]
 	name = null;
 }
 	:	'if' '(' exprvalue ')' '{' block '}'
-		{$name = "if(" + $exprvalue.name + ") {" + "\n" + "\t" +  $block.name + "\t" + "}";}
+		{$name = "if " + $exprvalue.name + ":" + "\n" + "\t" +  $block.name + "" + ";";}
 	;
 	
 elsePart returns [String name]
@@ -120,35 +120,10 @@ elsePart returns [String name]
 	name = null;
 }
 	:	'else' '{' block '}'
-		{$name = "else{\n" + $block.name + "\n}";}
+		{$name = "else:\n" + $block.name + ";";}
 	|	{$name = "";}
 	;
 
-forStat returns [String name]
-@init{
-	name = null;
-}
-	:	'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}'
-		{
-			
-			$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ") {\n" + "\t" + $block.name +  "\t" + "}";
-			
-		}
-	;
-
-forPara returns [String name]
-@init{
-	name = null;
-}
-	:	decExpression
-		{$name = $decExpression.name;}
-	|	normalExp
-		{$name = $normalExp.name;}
-	|	type normalExp
-		{
-			$name = $type.name + " " + $normalExp.name;
-		}
-	;
 
 whileStat returns [String name]
 @init{
@@ -157,7 +132,7 @@ whileStat returns [String name]
 	:	'while' '(' expr ')' '{' block '}'
 		{
 			
-			$name = "while(" + $expr.name + ") {\n" + "\t"  + $block.name + "\t" + "}";
+			$name = "while " + $expr.name + ":\n" + "\t"  + $block.name + "" + ";";
 			
 		}
 	;
@@ -179,7 +154,7 @@ stat returns [String name]
 }
 	:	type decVariable
 		{
-			$name = "\t" + $type.name + " " + $decVariable.name + "\n";
+			$name = "\t" + $type.name + "" + $decVariable.name + "\n";
 			CurVariable.type = $type.name;
 			VariableList.add(CurVariable);
 
@@ -188,12 +163,6 @@ stat returns [String name]
 		{
 			
 			$name = "\t"  + $ieStat.name + "\n";
-			
-		}
-	|	forStat
-		{
-			
-			$name = "\t"  + $forStat.name + "\n";
 			
 		}
 	|	whileStat
@@ -205,17 +174,17 @@ stat returns [String name]
 	|	callFunction ';'
 		{
 			
-			$name = "\t"  + $callFunction.name + ";\n";
+			$name = "\t"  + $callFunction.name + "\n";
 		}
 	|	'return' returnSentence ';'
 		{
 			
-			$name = "\t"  + "return " + $returnSentence.name + ";\n";
+			$name = "\t"  + "return " + $returnSentence.name + "\n";
 		}
 	|	normalExp ';'
 		{
 			
-			$name = "\t"  + $normalExp.name + ";\n";
+			$name = "\t"  + $normalExp.name + "\n";
 		}
 	|	LINE_COMMENT
 		{
@@ -232,10 +201,10 @@ functionVariable returns [String name]
 	name = null;
 }
 	:	decFunction
-		{$name = "function " + $decFunction.name;}
+		{$name = "def " + $decFunction.name;}
 	|	decVariable
 		{
-			$name = "var " + $decVariable.name;
+			$name = "" + $decVariable.name;
 		}
 	;
 
@@ -256,15 +225,15 @@ decFunction returns [String name, String para, String funname, String initial, S
 			
 			if ($decFunctionName.paraType == "int&")
 			{
-				$name = $decFunctionName.name + "\n\t{\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];\n\t}" + $semiColon.name + "\n";
+				$name = $decFunctionName.name + ":\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];" + $semiColon.name + "\n";
 	
-				$para = $decFunctionName.para + "\n\t{\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];\n\t}" + $semiColon.name + "\n";
+				$para = $decFunctionName.para + ":\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];" + $semiColon.name + "\n";
 				
 			}
 			else
 			{
-				$name = $decFunctionName.name + "\n{\n" + $functionImplement.name + "}" + $semiColon.name + "\n";
-				$para = $decFunctionName.para + "\n\t{\n" + $functionImplement.name + "\t}" + $semiColon.name + "\n";
+				$name = $decFunctionName.name + ":\n" + $functionImplement.name + ";" + $semiColon.name + "\n";
+				$para = $decFunctionName.para + ":\n" + $functionImplement.name + ";" + $semiColon.name + "\n";
 				
 			}
 			 $funname = $decFunctionName.funname;
@@ -285,7 +254,7 @@ decFunctionName returns [String name, String para, String funname, String ownnam
 	:	ID '(' decParameter ')'
 		{
 			$ownname = $ID.text;
-			$name = $ID.text + "_" + $decParameter.paranum + "(" + $decParameter.name + ")";
+			$name = $ID.text + "(" + $decParameter.name + ")";
 			$para = "(" + $decParameter.name + ")";
 			$p = $decParameter.name;
 			$funname = $ID.text + "_" + $decParameter.paranum;
@@ -336,7 +305,7 @@ decOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' decFormalPara a=decOtherPara
 		{
-			$name = " ," + $decFormalPara.name + $a.name;
+			$name = ", " + $decFormalPara.name + $a.name;
 			$paranum = $decFormalPara.paranum + $a.paranum;
 			$othername = $decFormalPara.name;
 		}
@@ -364,7 +333,7 @@ decVariable returns [String name, String variableName]
 }
 	:	ID array decExpression ';'
 		{
-			$name = $ID.text + $array.name + $decExpression.name + ";";
+			$name = $ID.text + $array.name + $decExpression.name + "";
 			$variableName = $ID.text + $array.name;
 		}
 	;
@@ -470,7 +439,7 @@ callOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' callFormalPara a=callOtherPara
 		{
-			$name = "," + $callFormalPara.name + $a.name;
+			$name = ", " + $callFormalPara.name + $a.name;
 			$paranum += $callFormalPara.paranum + $a.paranum;
 			$othername = $callFormalPara.name;
 		}
@@ -506,7 +475,7 @@ semiColon returns [String name]
 	name = null;
 }
 	:	';'
-		{$name = ";";}
+		{$name = "";}
 	|	{$name = "";}
 	;
 
@@ -515,7 +484,7 @@ decExpression returns [String name]
 	name = null;
 }
 	:	'=' exprvalue
-		{$name = "=" + $exprvalue.name;}
+		{$name = " = " + $exprvalue.name;}
 	|	{$name = "";}
 	;
 
@@ -609,49 +578,49 @@ operator returns [String name]
 	name = null;
 }
 	:	'+'
-		{$name = "+";}
+		{$name = " + ";}
 	|	'-'
-		{$name = "-";}
+		{$name = " - ";}
 	|	'*'
-		{$name = "*";}
+		{$name = " * ";}
 	|	'/'
-		{$name = "/";}
+		{$name = " / ";}
 	//|	'%'
 	//	{$name = "%";}
 	|	'^'
-		{$name = "^";}
+		{$name = " ^ ";}
 	|	'&'
-		{$name = "&";}
+		{$name = " & ";}
 	|	'&&'
-		{$name = "&&";}
+		{$name = " and ";}
 	|	'||'
-		{$name = "||";}
+		{$name = " or ";}
 	|	'+='
-		{$name = "+=";}
+		{$name = " += ";}
 	|	'-='
-		{$name = "-=";}
+		{$name = " -= ";}
 	|	'*='
-		{$name = "*=";}
+		{$name = " *= ";}
 	|	'/='
-		{$name = "/=";}
+		{$name = " /= ";}
 	//|	'%='
 	//	{$name = "%=";}
 	|	'^='
-		{$name = "^=";}
+		{$name = " ^= ";}
 	|	'&='
-		{$name = "&=";}
+		{$name = " &= ";}
 	|	'='
-		{$name = "=";}
+		{$name = " = ";}
 	|	'>'
-		{$name = ">";}
+		{$name = " > ";}
 	|	'>='
-		{$name = ">=";}
+		{$name = " >= ";}
 	|	'<'
-		{$name = "<";}
+		{$name = " < ";}
 	|	'<='
-		{$name = "<=";}
+		{$name = " <= ";}
 	|	'!='
-		{$name = "!=";}
+		{$name = " != ";}
 	;
 
 singleOperator returns [String name]
@@ -659,9 +628,9 @@ singleOperator returns [String name]
 	name = null;
 }
 	:	'++'
-		{$name = "++";}
+		{$name = "+= 1";}
 	|	'--'
-		{$name = "--";}
+		{$name = "-= 1";}
 	;
 
 ints returns [String name]
@@ -669,7 +638,7 @@ ints returns [String name]
 	name = null;
 }
     :   ',' INT a = ints
-		{$name = "," + $INT.text + $a.name;}
+		{$name = ", " + $INT.text + $a.name;}
     |	{$name = "";}
     ; 
 
@@ -679,15 +648,15 @@ type returns [String name]
 	name = null;
 }
 	:	'int'
-		{$name = "var";}
+		{$name = "";}
 	|	'char'
-		{$name = "var";}
+		{$name = "";}
 	|	'void'
-		{$name = "var";}
+		{$name = "";}
 	|	'int*'
-		{$name = "var";}
+		{$name = "";}
 	|	'int&'
-		{$name = "int&";}
+		{$name = "";}
 	;
 
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
