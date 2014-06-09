@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src\\qsort.g 2014-06-09 00:39:22
+// $ANTLR 3.4 src\\qsort.g 2014-06-09 17:28:11
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class qsortParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COMMENT", "ID", "INT", "LINE_COMMENT", "WS", "'!'", "'!='", "'&&'", "'&'", "'&='", "'('", "')'", "'*'", "'*='", "'+'", "'++'", "'+='", "','", "'-'", "'--'", "'-='", "'.'", "'/'", "'/='", "';'", "'<'", "'<='", "'='", "'>'", "'>='", "'['", "']'", "'^'", "'^='", "'char'", "'else'", "'for'", "'if'", "'int&'", "'int'", "'int*'", "'return'", "'void'", "'while'", "'{'", "'||'", "'}'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COMMENT", "ID", "INT", "LINE_COMMENT", "WS", "'!'", "'!='", "'&&'", "'&'", "'&='", "'('", "')'", "'*'", "'*='", "'+'", "'++'", "'+='", "','", "'-'", "'--'", "'-='", "'.'", "'/'", "'/='", "';'", "'<'", "'<='", "'='", "'>'", "'>='", "'['", "']'", "'^'", "'^='", "'char'", "'else'", "'if'", "'int&'", "'int'", "'int*'", "'return'", "'void'", "'while'", "'{'", "'||'", "'}'"
     };
 
     public static final int EOF=-1;
@@ -53,7 +53,6 @@ public class qsortParser extends Parser {
     public static final int T__47=47;
     public static final int T__48=48;
     public static final int T__49=49;
-    public static final int T__50=50;
     public static final int COMMENT=4;
     public static final int ID=5;
     public static final int INT=6;
@@ -205,7 +204,7 @@ public class qsortParser extends Parser {
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==COMMENT||LA1_0==LINE_COMMENT||LA1_0==38||(LA1_0 >= 42 && LA1_0 <= 44)||LA1_0==46) ) {
+            if ( (LA1_0==COMMENT||LA1_0==LINE_COMMENT||LA1_0==38||(LA1_0 >= 41 && LA1_0 <= 43)||LA1_0==45) ) {
                 alt1=1;
             }
             else if ( (LA1_0==EOF) ) {
@@ -234,7 +233,7 @@ public class qsortParser extends Parser {
                     state._fsp--;
 
 
-                    name = declaration3 + " " + a;
+                    name = declaration3 + "" + a;
 
                     }
                     break;
@@ -281,10 +280,10 @@ public class qsortParser extends Parser {
             int alt2=3;
             switch ( input.LA(1) ) {
             case 38:
+            case 41:
             case 42:
             case 43:
-            case 44:
-            case 46:
+            case 45:
                 {
                 alt2=1;
                 }
@@ -433,7 +432,7 @@ public class qsortParser extends Parser {
             // src\\qsort.g:114:2: ( 'if' '(' exprvalue ')' '{' block '}' )
             // src\\qsort.g:114:4: 'if' '(' exprvalue ')' '{' block '}'
             {
-            match(input,41,FOLLOW_41_in_ifPart154); 
+            match(input,40,FOLLOW_40_in_ifPart154); 
 
             match(input,14,FOLLOW_14_in_ifPart156); 
 
@@ -445,7 +444,7 @@ public class qsortParser extends Parser {
 
             match(input,15,FOLLOW_15_in_ifPart160); 
 
-            match(input,48,FOLLOW_48_in_ifPart162); 
+            match(input,47,FOLLOW_47_in_ifPart162); 
 
             pushFollow(FOLLOW_block_in_ifPart164);
             block9=block();
@@ -453,9 +452,9 @@ public class qsortParser extends Parser {
             state._fsp--;
 
 
-            match(input,50,FOLLOW_50_in_ifPart166); 
+            match(input,49,FOLLOW_49_in_ifPart166); 
 
-            name = "if(" + exprvalue8 + ") {" + "\n" + "\t" +  block9 + "\t" + "}";
+            name = "if " + exprvalue8 + ":" + "\n" + "\t" +  block9 + "" + ";";
 
             }
 
@@ -494,7 +493,7 @@ public class qsortParser extends Parser {
             if ( (LA3_0==39) ) {
                 alt3=1;
             }
-            else if ( ((LA3_0 >= COMMENT && LA3_0 <= ID)||LA3_0==LINE_COMMENT||LA3_0==38||(LA3_0 >= 40 && LA3_0 <= 47)||LA3_0==50) ) {
+            else if ( ((LA3_0 >= COMMENT && LA3_0 <= ID)||LA3_0==LINE_COMMENT||LA3_0==38||(LA3_0 >= 40 && LA3_0 <= 46)||LA3_0==49) ) {
                 alt3=2;
             }
             else {
@@ -510,7 +509,7 @@ public class qsortParser extends Parser {
                     {
                     match(input,39,FOLLOW_39_in_elsePart190); 
 
-                    match(input,48,FOLLOW_48_in_elsePart192); 
+                    match(input,47,FOLLOW_47_in_elsePart192); 
 
                     pushFollow(FOLLOW_block_in_elsePart194);
                     block10=block();
@@ -518,9 +517,9 @@ public class qsortParser extends Parser {
                     state._fsp--;
 
 
-                    match(input,50,FOLLOW_50_in_elsePart196); 
+                    match(input,49,FOLLOW_49_in_elsePart196); 
 
-                    name = "else{\n" + block10 + "\n}";
+                    name = "else:\n" + block10 + ";";
 
                     }
                     break;
@@ -548,247 +547,49 @@ public class qsortParser extends Parser {
 
 
 
-    // $ANTLR start "forStat"
-    // src\\qsort.g:127:1: forStat returns [String name] : 'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}' ;
-    public final String forStat() throws RecognitionException {
-        String name = null;
-
-
-        String forPara11 =null;
-
-        String expr12 =null;
-
-        String normalExp13 =null;
-
-        String block14 =null;
-
-
-
-        	name = null;
-
-        try {
-            // src\\qsort.g:131:2: ( 'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}' )
-            // src\\qsort.g:131:4: 'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}'
-            {
-            match(input,40,FOLLOW_40_in_forStat224); 
-
-            match(input,14,FOLLOW_14_in_forStat226); 
-
-            pushFollow(FOLLOW_forPara_in_forStat228);
-            forPara11=forPara();
-
-            state._fsp--;
-
-
-            match(input,28,FOLLOW_28_in_forStat230); 
-
-            pushFollow(FOLLOW_expr_in_forStat232);
-            expr12=expr();
-
-            state._fsp--;
-
-
-            match(input,28,FOLLOW_28_in_forStat234); 
-
-            pushFollow(FOLLOW_normalExp_in_forStat236);
-            normalExp13=normalExp();
-
-            state._fsp--;
-
-
-            match(input,15,FOLLOW_15_in_forStat238); 
-
-            match(input,48,FOLLOW_48_in_forStat240); 
-
-            pushFollow(FOLLOW_block_in_forStat242);
-            block14=block();
-
-            state._fsp--;
-
-
-            match(input,50,FOLLOW_50_in_forStat244); 
-
-
-            			
-            			name = "for(" + forPara11 + "; " + expr12 + "; " + normalExp13 + ") {\n" + "\t" + block14 +  "\t" + "}";
-            			
-            		
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return name;
-    }
-    // $ANTLR end "forStat"
-
-
-
-    // $ANTLR start "forPara"
-    // src\\qsort.g:139:1: forPara returns [String name] : ( decExpression | normalExp | type normalExp );
-    public final String forPara() throws RecognitionException {
-        String name = null;
-
-
-        String decExpression15 =null;
-
-        String normalExp16 =null;
-
-        String type17 =null;
-
-        String normalExp18 =null;
-
-
-
-        	name = null;
-
-        try {
-            // src\\qsort.g:143:2: ( decExpression | normalExp | type normalExp )
-            int alt4=3;
-            switch ( input.LA(1) ) {
-            case 28:
-            case 31:
-                {
-                alt4=1;
-                }
-                break;
-            case ID:
-                {
-                alt4=2;
-                }
-                break;
-            case 38:
-            case 42:
-            case 43:
-            case 44:
-            case 46:
-                {
-                alt4=3;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
-
-                throw nvae;
-
-            }
-
-            switch (alt4) {
-                case 1 :
-                    // src\\qsort.g:143:4: decExpression
-                    {
-                    pushFollow(FOLLOW_decExpression_in_forPara267);
-                    decExpression15=decExpression();
-
-                    state._fsp--;
-
-
-                    name = decExpression15;
-
-                    }
-                    break;
-                case 2 :
-                    // src\\qsort.g:145:4: normalExp
-                    {
-                    pushFollow(FOLLOW_normalExp_in_forPara276);
-                    normalExp16=normalExp();
-
-                    state._fsp--;
-
-
-                    name = normalExp16;
-
-                    }
-                    break;
-                case 3 :
-                    // src\\qsort.g:147:4: type normalExp
-                    {
-                    pushFollow(FOLLOW_type_in_forPara285);
-                    type17=type();
-
-                    state._fsp--;
-
-
-                    pushFollow(FOLLOW_normalExp_in_forPara287);
-                    normalExp18=normalExp();
-
-                    state._fsp--;
-
-
-
-                    			name = type17 + " " + normalExp18;
-                    		
-
-                    }
-                    break;
-
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return name;
-    }
-    // $ANTLR end "forPara"
-
-
-
     // $ANTLR start "whileStat"
-    // src\\qsort.g:153:1: whileStat returns [String name] : 'while' '(' expr ')' '{' block '}' ;
+    // src\\qsort.g:128:1: whileStat returns [String name] : 'while' '(' expr ')' '{' block '}' ;
     public final String whileStat() throws RecognitionException {
         String name = null;
 
 
-        String expr19 =null;
+        String expr11 =null;
 
-        String block20 =null;
+        String block12 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:157:2: ( 'while' '(' expr ')' '{' block '}' )
-            // src\\qsort.g:157:4: 'while' '(' expr ')' '{' block '}'
+            // src\\qsort.g:132:2: ( 'while' '(' expr ')' '{' block '}' )
+            // src\\qsort.g:132:4: 'while' '(' expr ')' '{' block '}'
             {
-            match(input,47,FOLLOW_47_in_whileStat310); 
+            match(input,46,FOLLOW_46_in_whileStat225); 
 
-            match(input,14,FOLLOW_14_in_whileStat312); 
+            match(input,14,FOLLOW_14_in_whileStat227); 
 
-            pushFollow(FOLLOW_expr_in_whileStat314);
-            expr19=expr();
-
-            state._fsp--;
-
-
-            match(input,15,FOLLOW_15_in_whileStat316); 
-
-            match(input,48,FOLLOW_48_in_whileStat318); 
-
-            pushFollow(FOLLOW_block_in_whileStat320);
-            block20=block();
+            pushFollow(FOLLOW_expr_in_whileStat229);
+            expr11=expr();
 
             state._fsp--;
 
 
-            match(input,50,FOLLOW_50_in_whileStat322); 
+            match(input,15,FOLLOW_15_in_whileStat231); 
+
+            match(input,47,FOLLOW_47_in_whileStat233); 
+
+            pushFollow(FOLLOW_block_in_whileStat235);
+            block12=block();
+
+            state._fsp--;
+
+
+            match(input,49,FOLLOW_49_in_whileStat237); 
 
 
             			
-            			name = "while(" + expr19 + ") {\n" + "\t"  + block20 + "\t" + "}";
+            			name = "while " + expr11 + ":\n" + "\t"  + block12 + "" + ";";
             			
             		
 
@@ -810,59 +611,59 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "block"
-    // src\\qsort.g:165:1: block returns [String name] : ( stat a= block |);
+    // src\\qsort.g:140:1: block returns [String name] : ( stat a= block |);
     public final String block() throws RecognitionException {
         String name = null;
 
 
         String a =null;
 
-        String stat21 =null;
+        String stat13 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:169:2: ( stat a= block |)
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // src\\qsort.g:144:2: ( stat a= block |)
+            int alt4=2;
+            int LA4_0 = input.LA(1);
 
-            if ( ((LA5_0 >= COMMENT && LA5_0 <= ID)||LA5_0==LINE_COMMENT||LA5_0==38||(LA5_0 >= 40 && LA5_0 <= 47)) ) {
-                alt5=1;
+            if ( ((LA4_0 >= COMMENT && LA4_0 <= ID)||LA4_0==LINE_COMMENT||LA4_0==38||(LA4_0 >= 40 && LA4_0 <= 46)) ) {
+                alt4=1;
             }
-            else if ( (LA5_0==50) ) {
-                alt5=2;
+            else if ( (LA4_0==49) ) {
+                alt4=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 4, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt5) {
+            switch (alt4) {
                 case 1 :
-                    // src\\qsort.g:169:4: stat a= block
+                    // src\\qsort.g:144:4: stat a= block
                     {
-                    pushFollow(FOLLOW_stat_in_block345);
-                    stat21=stat();
+                    pushFollow(FOLLOW_stat_in_block260);
+                    stat13=stat();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_block_in_block349);
+                    pushFollow(FOLLOW_block_in_block264);
                     a=block();
 
                     state._fsp--;
 
 
-                    name = stat21 + a;
+                    name = stat13 + a;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:171:4: 
+                    // src\\qsort.g:146:4: 
                     {
 
                     			name = "";
@@ -888,57 +689,50 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "stat"
-    // src\\qsort.g:176:1: stat returns [String name] : ( type decVariable | ieStat | forStat | whileStat | callFunction ';' | 'return' returnSentence ';' | normalExp ';' | LINE_COMMENT | COMMENT );
+    // src\\qsort.g:151:1: stat returns [String name] : ( type decVariable | ieStat | whileStat | callFunction ';' | 'return' returnSentence ';' | normalExp ';' | LINE_COMMENT | COMMENT );
     public final String stat() throws RecognitionException {
         String name = null;
 
 
-        String type22 =null;
+        String type14 =null;
 
-        qsortParser.decVariable_return decVariable23 =null;
+        qsortParser.decVariable_return decVariable15 =null;
 
-        String ieStat24 =null;
+        String ieStat16 =null;
 
-        String forStat25 =null;
+        String whileStat17 =null;
 
-        String whileStat26 =null;
+        String callFunction18 =null;
 
-        String callFunction27 =null;
+        String returnSentence19 =null;
 
-        String returnSentence28 =null;
-
-        String normalExp29 =null;
+        String normalExp20 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:180:2: ( type decVariable | ieStat | forStat | whileStat | callFunction ';' | 'return' returnSentence ';' | normalExp ';' | LINE_COMMENT | COMMENT )
-            int alt6=9;
+            // src\\qsort.g:155:2: ( type decVariable | ieStat | whileStat | callFunction ';' | 'return' returnSentence ';' | normalExp ';' | LINE_COMMENT | COMMENT )
+            int alt5=8;
             switch ( input.LA(1) ) {
             case 38:
+            case 41:
             case 42:
             case 43:
-            case 44:
-            case 46:
+            case 45:
                 {
-                alt6=1;
-                }
-                break;
-            case 41:
-                {
-                alt6=2;
+                alt5=1;
                 }
                 break;
             case 40:
                 {
-                alt6=3;
+                alt5=2;
                 }
                 break;
-            case 47:
+            case 46:
                 {
-                alt6=4;
+                alt5=3;
                 }
                 break;
             case ID:
@@ -946,25 +740,25 @@ public class qsortParser extends Parser {
                 switch ( input.LA(2) ) {
                 case 14:
                     {
-                    alt6=5;
+                    alt5=4;
                     }
                     break;
                 case 25:
                     {
-                    int LA6_10 = input.LA(3);
+                    int LA5_9 = input.LA(3);
 
-                    if ( (LA6_10==ID) ) {
-                        int LA6_12 = input.LA(4);
+                    if ( (LA5_9==ID) ) {
+                        int LA5_11 = input.LA(4);
 
-                        if ( (LA6_12==14) ) {
-                            alt6=5;
+                        if ( (LA5_11==14) ) {
+                            alt5=4;
                         }
-                        else if ( ((LA6_12 >= 10 && LA6_12 <= 13)||(LA6_12 >= 16 && LA6_12 <= 20)||(LA6_12 >= 22 && LA6_12 <= 24)||(LA6_12 >= 26 && LA6_12 <= 33)||(LA6_12 >= 36 && LA6_12 <= 37)||LA6_12==49) ) {
-                            alt6=7;
+                        else if ( ((LA5_11 >= 10 && LA5_11 <= 13)||(LA5_11 >= 16 && LA5_11 <= 20)||(LA5_11 >= 22 && LA5_11 <= 24)||(LA5_11 >= 26 && LA5_11 <= 33)||(LA5_11 >= 36 && LA5_11 <= 37)||LA5_11==48) ) {
+                            alt5=6;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 6, 12, input);
+                                new NoViableAltException("", 5, 11, input);
 
                             throw nvae;
 
@@ -972,7 +766,7 @@ public class qsortParser extends Parser {
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 6, 10, input);
+                            new NoViableAltException("", 5, 9, input);
 
                         throw nvae;
 
@@ -1002,14 +796,14 @@ public class qsortParser extends Parser {
                 case 34:
                 case 36:
                 case 37:
-                case 49:
+                case 48:
                     {
-                    alt6=7;
+                    alt5=6;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 6, 5, input);
+                        new NoViableAltException("", 5, 4, input);
 
                     throw nvae;
 
@@ -1017,48 +811,48 @@ public class qsortParser extends Parser {
 
                 }
                 break;
-            case 45:
+            case 44:
                 {
-                alt6=6;
+                alt5=5;
                 }
                 break;
             case LINE_COMMENT:
                 {
-                alt6=8;
+                alt5=7;
                 }
                 break;
             case COMMENT:
                 {
-                alt6=9;
+                alt5=8;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 5, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt6) {
+            switch (alt5) {
                 case 1 :
-                    // src\\qsort.g:180:4: type decVariable
+                    // src\\qsort.g:155:4: type decVariable
                     {
-                    pushFollow(FOLLOW_type_in_stat377);
-                    type22=type();
+                    pushFollow(FOLLOW_type_in_stat292);
+                    type14=type();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_decVariable_in_stat379);
-                    decVariable23=decVariable();
+                    pushFollow(FOLLOW_decVariable_in_stat294);
+                    decVariable15=decVariable();
 
                     state._fsp--;
 
 
 
-                    			name = "\t" + type22 + " " + (decVariable23!=null?decVariable23.name:null) + "\n";
-                    			CurVariable.type = type22;
+                    			name = "\t" + type14 + "" + (decVariable15!=null?decVariable15.name:null) + "\n";
+                    			CurVariable.type = type14;
                     			VariableList.add(CurVariable);
 
                     		
@@ -1066,116 +860,99 @@ public class qsortParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:187:4: ieStat
+                    // src\\qsort.g:162:4: ieStat
                     {
-                    pushFollow(FOLLOW_ieStat_in_stat388);
-                    ieStat24=ieStat();
+                    pushFollow(FOLLOW_ieStat_in_stat303);
+                    ieStat16=ieStat();
 
                     state._fsp--;
 
 
 
                     			
-                    			name = "\t"  + ieStat24 + "\n";
+                    			name = "\t"  + ieStat16 + "\n";
                     			
                     		
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:193:4: forStat
+                    // src\\qsort.g:168:4: whileStat
                     {
-                    pushFollow(FOLLOW_forStat_in_stat397);
-                    forStat25=forStat();
+                    pushFollow(FOLLOW_whileStat_in_stat312);
+                    whileStat17=whileStat();
 
                     state._fsp--;
 
 
 
                     			
-                    			name = "\t"  + forStat25 + "\n";
+                    			name = "\t"  + whileStat17 + "\n";
                     			
                     		
 
                     }
                     break;
                 case 4 :
-                    // src\\qsort.g:199:4: whileStat
+                    // src\\qsort.g:174:4: callFunction ';'
                     {
-                    pushFollow(FOLLOW_whileStat_in_stat406);
-                    whileStat26=whileStat();
+                    pushFollow(FOLLOW_callFunction_in_stat321);
+                    callFunction18=callFunction();
 
                     state._fsp--;
 
 
+                    match(input,28,FOLLOW_28_in_stat323); 
+
 
                     			
-                    			name = "\t"  + whileStat26 + "\n";
-                    			
+                    			name = "\t"  + callFunction18 + "\n";
                     		
 
                     }
                     break;
                 case 5 :
-                    // src\\qsort.g:205:4: callFunction ';'
+                    // src\\qsort.g:179:4: 'return' returnSentence ';'
                     {
-                    pushFollow(FOLLOW_callFunction_in_stat415);
-                    callFunction27=callFunction();
+                    match(input,44,FOLLOW_44_in_stat332); 
+
+                    pushFollow(FOLLOW_returnSentence_in_stat334);
+                    returnSentence19=returnSentence();
 
                     state._fsp--;
 
 
-                    match(input,28,FOLLOW_28_in_stat417); 
+                    match(input,28,FOLLOW_28_in_stat336); 
 
 
                     			
-                    			name = "\t"  + callFunction27 + ";\n";
+                    			name = "\t"  + "return " + returnSentence19 + "\n";
                     		
 
                     }
                     break;
                 case 6 :
-                    // src\\qsort.g:210:4: 'return' returnSentence ';'
+                    // src\\qsort.g:184:4: normalExp ';'
                     {
-                    match(input,45,FOLLOW_45_in_stat426); 
-
-                    pushFollow(FOLLOW_returnSentence_in_stat428);
-                    returnSentence28=returnSentence();
+                    pushFollow(FOLLOW_normalExp_in_stat345);
+                    normalExp20=normalExp();
 
                     state._fsp--;
 
 
-                    match(input,28,FOLLOW_28_in_stat430); 
+                    match(input,28,FOLLOW_28_in_stat347); 
 
 
                     			
-                    			name = "\t"  + "return " + returnSentence28 + ";\n";
+                    			name = "\t"  + normalExp20 + "\n";
                     		
 
                     }
                     break;
                 case 7 :
-                    // src\\qsort.g:215:4: normalExp ';'
+                    // src\\qsort.g:189:4: LINE_COMMENT
                     {
-                    pushFollow(FOLLOW_normalExp_in_stat439);
-                    normalExp29=normalExp();
-
-                    state._fsp--;
-
-
-                    match(input,28,FOLLOW_28_in_stat441); 
-
-
-                    			
-                    			name = "\t"  + normalExp29 + ";\n";
-                    		
-
-                    }
-                    break;
-                case 8 :
-                    // src\\qsort.g:220:4: LINE_COMMENT
-                    {
-                    match(input,LINE_COMMENT,FOLLOW_LINE_COMMENT_in_stat450); 
+                    match(input,LINE_COMMENT,FOLLOW_LINE_COMMENT_in_stat356); 
 
 
                     			name = "";
@@ -1183,10 +960,10 @@ public class qsortParser extends Parser {
 
                     }
                     break;
-                case 9 :
-                    // src\\qsort.g:224:4: COMMENT
+                case 8 :
+                    // src\\qsort.g:193:4: COMMENT
                     {
-                    match(input,COMMENT,FOLLOW_COMMENT_in_stat459); 
+                    match(input,COMMENT,FOLLOW_COMMENT_in_stat365); 
 
 
                     			name = "";
@@ -1212,36 +989,36 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "functionVariable"
-    // src\\qsort.g:230:1: functionVariable returns [String name] : ( decFunction | decVariable );
+    // src\\qsort.g:199:1: functionVariable returns [String name] : ( decFunction | decVariable );
     public final String functionVariable() throws RecognitionException {
         String name = null;
 
 
-        qsortParser.decFunction_return decFunction30 =null;
+        qsortParser.decFunction_return decFunction21 =null;
 
-        qsortParser.decVariable_return decVariable31 =null;
+        qsortParser.decVariable_return decVariable22 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:234:2: ( decFunction | decVariable )
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // src\\qsort.g:203:2: ( decFunction | decVariable )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA7_0==ID) ) {
-                int LA7_1 = input.LA(2);
+            if ( (LA6_0==ID) ) {
+                int LA6_1 = input.LA(2);
 
-                if ( (LA7_1==14) ) {
-                    alt7=1;
+                if ( (LA6_1==14) ) {
+                    alt6=1;
                 }
-                else if ( (LA7_1==28||LA7_1==31||LA7_1==34) ) {
-                    alt7=2;
+                else if ( (LA6_1==28||LA6_1==31||LA6_1==34) ) {
+                    alt6=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 7, 1, input);
+                        new NoViableAltException("", 6, 1, input);
 
                     throw nvae;
 
@@ -1249,36 +1026,36 @@ public class qsortParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt7) {
+            switch (alt6) {
                 case 1 :
-                    // src\\qsort.g:234:4: decFunction
+                    // src\\qsort.g:203:4: decFunction
                     {
-                    pushFollow(FOLLOW_decFunction_in_functionVariable483);
-                    decFunction30=decFunction();
+                    pushFollow(FOLLOW_decFunction_in_functionVariable389);
+                    decFunction21=decFunction();
 
                     state._fsp--;
 
 
-                    name = "function " + (decFunction30!=null?decFunction30.name:null);
+                    name = "def " + (decFunction21!=null?decFunction21.name:null);
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:236:4: decVariable
+                    // src\\qsort.g:205:4: decVariable
                     {
-                    pushFollow(FOLLOW_decVariable_in_functionVariable492);
-                    decVariable31=decVariable();
+                    pushFollow(FOLLOW_decVariable_in_functionVariable398);
+                    decVariable22=decVariable();
 
                     state._fsp--;
 
 
 
-                    			name = "var " + (decVariable31!=null?decVariable31.name:null);
+                    			name = "" + (decVariable22!=null?decVariable22.name:null);
                     		
 
                     }
@@ -1309,17 +1086,17 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decFunction"
-    // src\\qsort.g:242:1: decFunction returns [String name, String para, String funname, String initial, String justpara] : decFunctionName '{' functionImplement '}' semiColon ;
+    // src\\qsort.g:211:1: decFunction returns [String name, String para, String funname, String initial, String justpara] : decFunctionName '{' functionImplement '}' semiColon ;
     public final qsortParser.decFunction_return decFunction() throws RecognitionException {
         qsortParser.decFunction_return retval = new qsortParser.decFunction_return();
         retval.start = input.LT(1);
 
 
-        qsortParser.decFunctionName_return decFunctionName32 =null;
+        qsortParser.decFunctionName_return decFunctionName23 =null;
 
-        qsortParser.functionImplement_return functionImplement33 =null;
+        qsortParser.functionImplement_return functionImplement24 =null;
 
-        String semiColon34 =null;
+        String semiColon25 =null;
 
 
 
@@ -1330,27 +1107,27 @@ public class qsortParser extends Parser {
         	retval.justpara = null;
 
         try {
-            // src\\qsort.g:250:2: ( decFunctionName '{' functionImplement '}' semiColon )
-            // src\\qsort.g:250:4: decFunctionName '{' functionImplement '}' semiColon
+            // src\\qsort.g:219:2: ( decFunctionName '{' functionImplement '}' semiColon )
+            // src\\qsort.g:219:4: decFunctionName '{' functionImplement '}' semiColon
             {
-            pushFollow(FOLLOW_decFunctionName_in_decFunction515);
-            decFunctionName32=decFunctionName();
+            pushFollow(FOLLOW_decFunctionName_in_decFunction421);
+            decFunctionName23=decFunctionName();
 
             state._fsp--;
 
 
-            match(input,48,FOLLOW_48_in_decFunction517); 
+            match(input,47,FOLLOW_47_in_decFunction423); 
 
-            pushFollow(FOLLOW_functionImplement_in_decFunction519);
-            functionImplement33=functionImplement();
+            pushFollow(FOLLOW_functionImplement_in_decFunction425);
+            functionImplement24=functionImplement();
 
             state._fsp--;
 
 
-            match(input,50,FOLLOW_50_in_decFunction521); 
+            match(input,49,FOLLOW_49_in_decFunction427); 
 
-            pushFollow(FOLLOW_semiColon_in_decFunction523);
-            semiColon34=semiColon();
+            pushFollow(FOLLOW_semiColon_in_decFunction429);
+            semiColon25=semiColon();
 
             state._fsp--;
 
@@ -1358,25 +1135,25 @@ public class qsortParser extends Parser {
 
             		
             			// leo
-            			FunctionName.add((decFunctionName32!=null?decFunctionName32.ownname:null));
-            			FunctionType.add((decFunctionName32!=null?decFunctionName32.paraType:null));
+            			FunctionName.add((decFunctionName23!=null?decFunctionName23.ownname:null));
+            			FunctionType.add((decFunctionName23!=null?decFunctionName23.paraType:null));
             			
-            			if ((decFunctionName32!=null?decFunctionName32.paraType:null) == "int&")
+            			if ((decFunctionName23!=null?decFunctionName23.paraType:null) == "int&")
             			{
-            				retval.name = (decFunctionName32!=null?decFunctionName32.name:null) + "\n\t{\n" + (functionImplement33!=null?functionImplement33.name:null) + "\t" + "return [" + (decFunctionName32!=null?decFunctionName32.p:null) + "];\n\t}" + semiColon34 + "\n";
+            				retval.name = (decFunctionName23!=null?decFunctionName23.name:null) + ":\n" + (functionImplement24!=null?functionImplement24.name:null) + "\t" + "return [" + (decFunctionName23!=null?decFunctionName23.p:null) + "];" + semiColon25 + "\n";
             	
-            				retval.para = (decFunctionName32!=null?decFunctionName32.para:null) + "\n\t{\n" + (functionImplement33!=null?functionImplement33.name:null) + "\t" + "return [" + (decFunctionName32!=null?decFunctionName32.p:null) + "];\n\t}" + semiColon34 + "\n";
+            				retval.para = (decFunctionName23!=null?decFunctionName23.para:null) + ":\n" + (functionImplement24!=null?functionImplement24.name:null) + "\t" + "return [" + (decFunctionName23!=null?decFunctionName23.p:null) + "];" + semiColon25 + "\n";
             				
             			}
             			else
             			{
-            				retval.name = (decFunctionName32!=null?decFunctionName32.name:null) + "\n{\n" + (functionImplement33!=null?functionImplement33.name:null) + "}" + semiColon34 + "\n";
-            				retval.para = (decFunctionName32!=null?decFunctionName32.para:null) + "\n\t{\n" + (functionImplement33!=null?functionImplement33.name:null) + "\t}" + semiColon34 + "\n";
+            				retval.name = (decFunctionName23!=null?decFunctionName23.name:null) + ":\n" + (functionImplement24!=null?functionImplement24.name:null) + ";" + semiColon25 + "\n";
+            				retval.para = (decFunctionName23!=null?decFunctionName23.para:null) + ":\n" + (functionImplement24!=null?functionImplement24.name:null) + ";" + semiColon25 + "\n";
             				
             			}
-            			 retval.funname = (decFunctionName32!=null?decFunctionName32.funname:null);
-            			 retval.justpara = (decFunctionName32!=null?decFunctionName32.para:null);
-            			 retval.initial = (functionImplement33!=null?functionImplement33.initial:null);
+            			 retval.funname = (decFunctionName23!=null?decFunctionName23.funname:null);
+            			 retval.justpara = (decFunctionName23!=null?decFunctionName23.para:null);
+            			 retval.initial = (functionImplement24!=null?functionImplement24.initial:null);
             		
 
             }
@@ -1409,14 +1186,14 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decFunctionName"
-    // src\\qsort.g:276:1: decFunctionName returns [String name, String para, String funname, String ownname, String p, String paraType] : ID '(' decParameter ')' ;
+    // src\\qsort.g:245:1: decFunctionName returns [String name, String para, String funname, String ownname, String p, String paraType] : ID '(' decParameter ')' ;
     public final qsortParser.decFunctionName_return decFunctionName() throws RecognitionException {
         qsortParser.decFunctionName_return retval = new qsortParser.decFunctionName_return();
         retval.start = input.LT(1);
 
 
-        Token ID35=null;
-        qsortParser.decParameter_return decParameter36 =null;
+        Token ID26=null;
+        qsortParser.decParameter_return decParameter27 =null;
 
 
 
@@ -1428,28 +1205,28 @@ public class qsortParser extends Parser {
         	retval.paraType = null;
 
         try {
-            // src\\qsort.g:285:2: ( ID '(' decParameter ')' )
-            // src\\qsort.g:285:4: ID '(' decParameter ')'
+            // src\\qsort.g:254:2: ( ID '(' decParameter ')' )
+            // src\\qsort.g:254:4: ID '(' decParameter ')'
             {
-            ID35=(Token)match(input,ID,FOLLOW_ID_in_decFunctionName546); 
+            ID26=(Token)match(input,ID,FOLLOW_ID_in_decFunctionName452); 
 
-            match(input,14,FOLLOW_14_in_decFunctionName548); 
+            match(input,14,FOLLOW_14_in_decFunctionName454); 
 
-            pushFollow(FOLLOW_decParameter_in_decFunctionName550);
-            decParameter36=decParameter();
+            pushFollow(FOLLOW_decParameter_in_decFunctionName456);
+            decParameter27=decParameter();
 
             state._fsp--;
 
 
-            match(input,15,FOLLOW_15_in_decFunctionName552); 
+            match(input,15,FOLLOW_15_in_decFunctionName458); 
 
 
-            			retval.ownname = (ID35!=null?ID35.getText():null);
-            			retval.name = (ID35!=null?ID35.getText():null) + "_" + (decParameter36!=null?decParameter36.paranum:0) + "(" + (decParameter36!=null?decParameter36.name:null) + ")";
-            			retval.para = "(" + (decParameter36!=null?decParameter36.name:null) + ")";
-            			retval.p = (decParameter36!=null?decParameter36.name:null);
-            			retval.funname = (ID35!=null?ID35.getText():null) + "_" + (decParameter36!=null?decParameter36.paranum:0);
-            			retval.paraType = (decParameter36!=null?decParameter36.paraType:null);
+            			retval.ownname = (ID26!=null?ID26.getText():null);
+            			retval.name = (ID26!=null?ID26.getText():null) + "(" + (decParameter27!=null?decParameter27.name:null) + ")";
+            			retval.para = "(" + (decParameter27!=null?decParameter27.name:null) + ")";
+            			retval.p = (decParameter27!=null?decParameter27.name:null);
+            			retval.funname = (ID26!=null?ID26.getText():null) + "_" + (decParameter27!=null?decParameter27.paranum:0);
+            			retval.paraType = (decParameter27!=null?decParameter27.paraType:null);
             		
 
             }
@@ -1479,15 +1256,15 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decParameter"
-    // src\\qsort.g:296:1: decParameter returns [String name, int paranum, String paraType] : ( decFormalPara decOtherPara |);
+    // src\\qsort.g:265:1: decParameter returns [String name, int paranum, String paraType] : ( decFormalPara decOtherPara |);
     public final qsortParser.decParameter_return decParameter() throws RecognitionException {
         qsortParser.decParameter_return retval = new qsortParser.decParameter_return();
         retval.start = input.LT(1);
 
 
-        qsortParser.decFormalPara_return decFormalPara37 =null;
+        qsortParser.decFormalPara_return decFormalPara28 =null;
 
-        qsortParser.decOtherPara_return decOtherPara38 =null;
+        qsortParser.decOtherPara_return decOtherPara29 =null;
 
 
 
@@ -1496,49 +1273,49 @@ public class qsortParser extends Parser {
         	retval.paraType = null;
 
         try {
-            // src\\qsort.g:302:2: ( decFormalPara decOtherPara |)
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // src\\qsort.g:271:2: ( decFormalPara decOtherPara |)
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( (LA8_0==38||(LA8_0 >= 42 && LA8_0 <= 44)||LA8_0==46) ) {
-                alt8=1;
+            if ( (LA7_0==38||(LA7_0 >= 41 && LA7_0 <= 43)||LA7_0==45) ) {
+                alt7=1;
             }
-            else if ( (LA8_0==15) ) {
-                alt8=2;
+            else if ( (LA7_0==15) ) {
+                alt7=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt8) {
+            switch (alt7) {
                 case 1 :
-                    // src\\qsort.g:302:4: decFormalPara decOtherPara
+                    // src\\qsort.g:271:4: decFormalPara decOtherPara
                     {
-                    pushFollow(FOLLOW_decFormalPara_in_decParameter575);
-                    decFormalPara37=decFormalPara();
+                    pushFollow(FOLLOW_decFormalPara_in_decParameter481);
+                    decFormalPara28=decFormalPara();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_decOtherPara_in_decParameter577);
-                    decOtherPara38=decOtherPara();
+                    pushFollow(FOLLOW_decOtherPara_in_decParameter483);
+                    decOtherPara29=decOtherPara();
 
                     state._fsp--;
 
 
 
-                    			retval.name = (decFormalPara37!=null?decFormalPara37.name:null) + (decOtherPara38!=null?decOtherPara38.name:null);
-                    			retval.paranum = (decFormalPara37!=null?decFormalPara37.paranum:0) + (decOtherPara38!=null?decOtherPara38.paranum:0);
-                    			retval.paraType = (decFormalPara37!=null?decFormalPara37.paraType:null);
+                    			retval.name = (decFormalPara28!=null?decFormalPara28.name:null) + (decOtherPara29!=null?decOtherPara29.name:null);
+                    			retval.paranum = (decFormalPara28!=null?decFormalPara28.paranum:0) + (decOtherPara29!=null?decOtherPara29.paranum:0);
+                    			retval.paraType = (decFormalPara28!=null?decFormalPara28.paraType:null);
                     		
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:308:4: 
+                    // src\\qsort.g:277:4: 
                     {
 
                     			retval.name = ""; 
@@ -1574,14 +1351,14 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decFormalPara"
-    // src\\qsort.g:314:1: decFormalPara returns [String name, int paranum, String paraType] : type ID ;
+    // src\\qsort.g:283:1: decFormalPara returns [String name, int paranum, String paraType] : type ID ;
     public final qsortParser.decFormalPara_return decFormalPara() throws RecognitionException {
         qsortParser.decFormalPara_return retval = new qsortParser.decFormalPara_return();
         retval.start = input.LT(1);
 
 
-        Token ID39=null;
-        String type40 =null;
+        Token ID30=null;
+        String type31 =null;
 
 
 
@@ -1590,24 +1367,24 @@ public class qsortParser extends Parser {
         	retval.paraType = null;
 
         try {
-            // src\\qsort.g:320:2: ( type ID )
-            // src\\qsort.g:320:4: type ID
+            // src\\qsort.g:289:2: ( type ID )
+            // src\\qsort.g:289:4: type ID
             {
-            pushFollow(FOLLOW_type_in_decFormalPara606);
-            type40=type();
+            pushFollow(FOLLOW_type_in_decFormalPara512);
+            type31=type();
 
             state._fsp--;
 
 
-            ID39=(Token)match(input,ID,FOLLOW_ID_in_decFormalPara608); 
+            ID30=(Token)match(input,ID,FOLLOW_ID_in_decFormalPara514); 
 
 
-            			retval.name = (ID39!=null?ID39.getText():null);
+            			retval.name = (ID30!=null?ID30.getText():null);
             			if(retval.name == null || retval.name == "")
             				retval.paranum = 0;
             			else
             				retval.paranum = 1;
-            			retval.paraType = type40;
+            			retval.paraType = type31;
             		
 
             }
@@ -1637,7 +1414,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decOtherPara"
-    // src\\qsort.g:331:1: decOtherPara returns [String name, int paranum, String othername] : ( ',' decFormalPara a= decOtherPara |);
+    // src\\qsort.g:300:1: decOtherPara returns [String name, int paranum, String othername] : ( ',' decFormalPara a= decOtherPara |);
     public final qsortParser.decOtherPara_return decOtherPara() throws RecognitionException {
         qsortParser.decOtherPara_return retval = new qsortParser.decOtherPara_return();
         retval.start = input.LT(1);
@@ -1645,7 +1422,7 @@ public class qsortParser extends Parser {
 
         qsortParser.decOtherPara_return a =null;
 
-        qsortParser.decFormalPara_return decFormalPara41 =null;
+        qsortParser.decFormalPara_return decFormalPara32 =null;
 
 
 
@@ -1654,51 +1431,51 @@ public class qsortParser extends Parser {
         	retval.othername = null;
 
         try {
-            // src\\qsort.g:337:2: ( ',' decFormalPara a= decOtherPara |)
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // src\\qsort.g:306:2: ( ',' decFormalPara a= decOtherPara |)
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA9_0==21) ) {
-                alt9=1;
+            if ( (LA8_0==21) ) {
+                alt8=1;
             }
-            else if ( (LA9_0==15) ) {
-                alt9=2;
+            else if ( (LA8_0==15) ) {
+                alt8=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt9) {
+            switch (alt8) {
                 case 1 :
-                    // src\\qsort.g:337:4: ',' decFormalPara a= decOtherPara
+                    // src\\qsort.g:306:4: ',' decFormalPara a= decOtherPara
                     {
-                    match(input,21,FOLLOW_21_in_decOtherPara631); 
+                    match(input,21,FOLLOW_21_in_decOtherPara537); 
 
-                    pushFollow(FOLLOW_decFormalPara_in_decOtherPara633);
-                    decFormalPara41=decFormalPara();
+                    pushFollow(FOLLOW_decFormalPara_in_decOtherPara539);
+                    decFormalPara32=decFormalPara();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_decOtherPara_in_decOtherPara637);
+                    pushFollow(FOLLOW_decOtherPara_in_decOtherPara543);
                     a=decOtherPara();
 
                     state._fsp--;
 
 
 
-                    			retval.name = " ," + (decFormalPara41!=null?decFormalPara41.name:null) + (a!=null?a.name:null);
-                    			retval.paranum = (decFormalPara41!=null?decFormalPara41.paranum:0) + (a!=null?a.paranum:0);
-                    			retval.othername = (decFormalPara41!=null?decFormalPara41.name:null);
+                    			retval.name = ", " + (decFormalPara32!=null?decFormalPara32.name:null) + (a!=null?a.name:null);
+                    			retval.paranum = (decFormalPara32!=null?decFormalPara32.paranum:0) + (a!=null?a.paranum:0);
+                    			retval.othername = (decFormalPara32!=null?decFormalPara32.name:null);
                     		
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:343:4: 
+                    // src\\qsort.g:312:4: 
                     {
 
                     			retval.name = "";
@@ -1733,13 +1510,13 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "functionImplement"
-    // src\\qsort.g:349:1: functionImplement returns [String name, String initial] : block ;
+    // src\\qsort.g:318:1: functionImplement returns [String name, String initial] : block ;
     public final qsortParser.functionImplement_return functionImplement() throws RecognitionException {
         qsortParser.functionImplement_return retval = new qsortParser.functionImplement_return();
         retval.start = input.LT(1);
 
 
-        String block42 =null;
+        String block33 =null;
 
 
 
@@ -1747,17 +1524,17 @@ public class qsortParser extends Parser {
         	retval.initial = null;
 
         try {
-            // src\\qsort.g:354:2: ( block )
-            // src\\qsort.g:354:4: block
+            // src\\qsort.g:323:2: ( block )
+            // src\\qsort.g:323:4: block
             {
-            pushFollow(FOLLOW_block_in_functionImplement665);
-            block42=block();
+            pushFollow(FOLLOW_block_in_functionImplement571);
+            block33=block();
 
             state._fsp--;
 
 
-            retval.name = block42;
-            		 retval.initial = block42;
+            retval.name = block33;
+            		 retval.initial = block33;
             		
 
             }
@@ -1786,16 +1563,16 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decVariable"
-    // src\\qsort.g:360:1: decVariable returns [String name, String variableName] : ID array decExpression ';' ;
+    // src\\qsort.g:329:1: decVariable returns [String name, String variableName] : ID array decExpression ';' ;
     public final qsortParser.decVariable_return decVariable() throws RecognitionException {
         qsortParser.decVariable_return retval = new qsortParser.decVariable_return();
         retval.start = input.LT(1);
 
 
-        Token ID43=null;
-        String array44 =null;
+        Token ID34=null;
+        String array35 =null;
 
-        String decExpression45 =null;
+        String decExpression36 =null;
 
 
 
@@ -1803,28 +1580,28 @@ public class qsortParser extends Parser {
         	retval.variableName = null;
 
         try {
-            // src\\qsort.g:365:2: ( ID array decExpression ';' )
-            // src\\qsort.g:365:4: ID array decExpression ';'
+            // src\\qsort.g:334:2: ( ID array decExpression ';' )
+            // src\\qsort.g:334:4: ID array decExpression ';'
             {
-            ID43=(Token)match(input,ID,FOLLOW_ID_in_decVariable688); 
+            ID34=(Token)match(input,ID,FOLLOW_ID_in_decVariable594); 
 
-            pushFollow(FOLLOW_array_in_decVariable690);
-            array44=array();
-
-            state._fsp--;
-
-
-            pushFollow(FOLLOW_decExpression_in_decVariable692);
-            decExpression45=decExpression();
+            pushFollow(FOLLOW_array_in_decVariable596);
+            array35=array();
 
             state._fsp--;
 
 
-            match(input,28,FOLLOW_28_in_decVariable694); 
+            pushFollow(FOLLOW_decExpression_in_decVariable598);
+            decExpression36=decExpression();
+
+            state._fsp--;
 
 
-            			retval.name = (ID43!=null?ID43.getText():null) + array44 + decExpression45 + ";";
-            			retval.variableName = (ID43!=null?ID43.getText():null) + array44;
+            match(input,28,FOLLOW_28_in_decVariable600); 
+
+
+            			retval.name = (ID34!=null?ID34.getText():null) + array35 + decExpression36 + "";
+            			retval.variableName = (ID34!=null?ID34.getText():null) + array35;
             		
 
             }
@@ -1848,37 +1625,37 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callFunction"
-    // src\\qsort.g:372:1: callFunction returns [String name] : ( callName | ID '.' callName );
+    // src\\qsort.g:341:1: callFunction returns [String name] : ( callName | ID '.' callName );
     public final String callFunction() throws RecognitionException {
         String name = null;
 
 
-        Token ID47=null;
-        qsortParser.callName_return callName46 =null;
+        Token ID38=null;
+        qsortParser.callName_return callName37 =null;
 
-        qsortParser.callName_return callName48 =null;
+        qsortParser.callName_return callName39 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:376:2: ( callName | ID '.' callName )
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // src\\qsort.g:345:2: ( callName | ID '.' callName )
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA10_0==ID) ) {
-                int LA10_1 = input.LA(2);
+            if ( (LA9_0==ID) ) {
+                int LA9_1 = input.LA(2);
 
-                if ( (LA10_1==14) ) {
-                    alt10=1;
+                if ( (LA9_1==14) ) {
+                    alt9=1;
                 }
-                else if ( (LA10_1==25) ) {
-                    alt10=2;
+                else if ( (LA9_1==25) ) {
+                    alt9=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 10, 1, input);
+                        new NoViableAltException("", 9, 1, input);
 
                     throw nvae;
 
@@ -1886,40 +1663,40 @@ public class qsortParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt10) {
+            switch (alt9) {
                 case 1 :
-                    // src\\qsort.g:376:4: callName
+                    // src\\qsort.g:345:4: callName
                     {
-                    pushFollow(FOLLOW_callName_in_callFunction717);
-                    callName46=callName();
+                    pushFollow(FOLLOW_callName_in_callFunction623);
+                    callName37=callName();
 
                     state._fsp--;
 
 
-                    name = (callName46!=null?callName46.name:null);
+                    name = (callName37!=null?callName37.name:null);
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:378:4: ID '.' callName
+                    // src\\qsort.g:347:4: ID '.' callName
                     {
-                    ID47=(Token)match(input,ID,FOLLOW_ID_in_callFunction726); 
+                    ID38=(Token)match(input,ID,FOLLOW_ID_in_callFunction632); 
 
-                    match(input,25,FOLLOW_25_in_callFunction728); 
+                    match(input,25,FOLLOW_25_in_callFunction634); 
 
-                    pushFollow(FOLLOW_callName_in_callFunction730);
-                    callName48=callName();
+                    pushFollow(FOLLOW_callName_in_callFunction636);
+                    callName39=callName();
 
                     state._fsp--;
 
 
 
-                    			name = (ID47!=null?ID47.getText():null) + "." + (callName48!=null?callName48.subname:null);
+                    			name = (ID38!=null?ID38.getText():null) + "." + (callName39!=null?callName39.subname:null);
                     		
 
                     }
@@ -1947,14 +1724,14 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callName"
-    // src\\qsort.g:384:1: callName returns [String name, String subname] : ID '(' callParameter ')' ;
+    // src\\qsort.g:353:1: callName returns [String name, String subname] : ID '(' callParameter ')' ;
     public final qsortParser.callName_return callName() throws RecognitionException {
         qsortParser.callName_return retval = new qsortParser.callName_return();
         retval.start = input.LT(1);
 
 
-        Token ID49=null;
-        qsortParser.callParameter_return callParameter50 =null;
+        Token ID40=null;
+        qsortParser.callParameter_return callParameter41 =null;
 
 
 
@@ -1962,43 +1739,43 @@ public class qsortParser extends Parser {
         	retval.subname = null;
 
         try {
-            // src\\qsort.g:389:2: ( ID '(' callParameter ')' )
-            // src\\qsort.g:389:4: ID '(' callParameter ')'
+            // src\\qsort.g:358:2: ( ID '(' callParameter ')' )
+            // src\\qsort.g:358:4: ID '(' callParameter ')'
             {
-            ID49=(Token)match(input,ID,FOLLOW_ID_in_callName753); 
+            ID40=(Token)match(input,ID,FOLLOW_ID_in_callName659); 
 
-            match(input,14,FOLLOW_14_in_callName755); 
+            match(input,14,FOLLOW_14_in_callName661); 
 
-            pushFollow(FOLLOW_callParameter_in_callName757);
-            callParameter50=callParameter();
+            pushFollow(FOLLOW_callParameter_in_callName663);
+            callParameter41=callParameter();
 
             state._fsp--;
 
 
-            match(input,15,FOLLOW_15_in_callName759); 
+            match(input,15,FOLLOW_15_in_callName665); 
 
 
-            			int k  = FunctionName.indexOf((ID49!=null?ID49.getText():null));
+            			int k  = FunctionName.indexOf((ID40!=null?ID40.getText():null));
             			int index = 0;
             			boolean isPub = true;
             			if ((k >= 0) && (FunctionType.get(k) == "int&"))
             			{
             				if(isPub)
-            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
             				else
-            					retval.name = "var temp = " + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ");\n" + "\t"+ (callParameter50!=null?callParameter50.temp1:null) + "= temp[0];\n" + "\t" +(callParameter50!=null?callParameter50.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
             			}
             			else
             			{
             				if(isPub)
             				{
-            					retval.name = "" + (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            					retval.name = "" + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             				}
             				else
             				{
-            					retval.name = (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            					retval.name = (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             				}
-            				retval.subname = (ID49!=null?ID49.getText():null) + "_" + (callParameter50!=null?callParameter50.paranum:0) + "(" + (callParameter50!=null?callParameter50.name:null) + ")";
+            				retval.subname = (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             			}
             		
 
@@ -2029,14 +1806,14 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callNameInObject"
-    // src\\qsort.g:416:1: callNameInObject returns [String para, String var, int paranum] : ID '(' callParameter ')' ;
+    // src\\qsort.g:385:1: callNameInObject returns [String para, String var, int paranum] : ID '(' callParameter ')' ;
     public final qsortParser.callNameInObject_return callNameInObject() throws RecognitionException {
         qsortParser.callNameInObject_return retval = new qsortParser.callNameInObject_return();
         retval.start = input.LT(1);
 
 
-        Token ID52=null;
-        qsortParser.callParameter_return callParameter51 =null;
+        Token ID43=null;
+        qsortParser.callParameter_return callParameter42 =null;
 
 
 
@@ -2045,25 +1822,25 @@ public class qsortParser extends Parser {
         	retval.paranum = 0;
 
         try {
-            // src\\qsort.g:422:2: ( ID '(' callParameter ')' )
-            // src\\qsort.g:422:4: ID '(' callParameter ')'
+            // src\\qsort.g:391:2: ( ID '(' callParameter ')' )
+            // src\\qsort.g:391:4: ID '(' callParameter ')'
             {
-            ID52=(Token)match(input,ID,FOLLOW_ID_in_callNameInObject782); 
+            ID43=(Token)match(input,ID,FOLLOW_ID_in_callNameInObject688); 
 
-            match(input,14,FOLLOW_14_in_callNameInObject784); 
+            match(input,14,FOLLOW_14_in_callNameInObject690); 
 
-            pushFollow(FOLLOW_callParameter_in_callNameInObject786);
-            callParameter51=callParameter();
+            pushFollow(FOLLOW_callParameter_in_callNameInObject692);
+            callParameter42=callParameter();
 
             state._fsp--;
 
 
-            match(input,15,FOLLOW_15_in_callNameInObject788); 
+            match(input,15,FOLLOW_15_in_callNameInObject694); 
 
 
-            			retval.para = "(" + (callParameter51!=null?callParameter51.name:null) + ")";
-            		 	retval.var = (ID52!=null?ID52.getText():null);
-            		 	retval.paranum = (callParameter51!=null?callParameter51.paranum:0);
+            			retval.para = "(" + (callParameter42!=null?callParameter42.name:null) + ")";
+            		 	retval.var = (ID43!=null?ID43.getText():null);
+            		 	retval.paranum = (callParameter42!=null?callParameter42.paranum:0);
             		
 
             }
@@ -2094,15 +1871,15 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callParameter"
-    // src\\qsort.g:430:1: callParameter returns [String name, int paranum, String temp1, String temp2] : ( callFormalPara callOtherPara |);
+    // src\\qsort.g:399:1: callParameter returns [String name, int paranum, String temp1, String temp2] : ( callFormalPara callOtherPara |);
     public final qsortParser.callParameter_return callParameter() throws RecognitionException {
         qsortParser.callParameter_return retval = new qsortParser.callParameter_return();
         retval.start = input.LT(1);
 
 
-        qsortParser.callFormalPara_return callFormalPara53 =null;
+        qsortParser.callFormalPara_return callFormalPara44 =null;
 
-        qsortParser.callOtherPara_return callOtherPara54 =null;
+        qsortParser.callOtherPara_return callOtherPara45 =null;
 
 
 
@@ -2112,50 +1889,50 @@ public class qsortParser extends Parser {
         	retval.temp2 = null;
 
         try {
-            // src\\qsort.g:437:2: ( callFormalPara callOtherPara |)
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // src\\qsort.g:406:2: ( callFormalPara callOtherPara |)
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( ((LA11_0 >= ID && LA11_0 <= INT)||LA11_0==9||LA11_0==14||LA11_0==22||LA11_0==48) ) {
-                alt11=1;
+            if ( ((LA10_0 >= ID && LA10_0 <= INT)||LA10_0==9||LA10_0==14||LA10_0==22||LA10_0==47) ) {
+                alt10=1;
             }
-            else if ( (LA11_0==15) ) {
-                alt11=2;
+            else if ( (LA10_0==15) ) {
+                alt10=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt11) {
+            switch (alt10) {
                 case 1 :
-                    // src\\qsort.g:437:4: callFormalPara callOtherPara
+                    // src\\qsort.g:406:4: callFormalPara callOtherPara
                     {
-                    pushFollow(FOLLOW_callFormalPara_in_callParameter813);
-                    callFormalPara53=callFormalPara();
+                    pushFollow(FOLLOW_callFormalPara_in_callParameter719);
+                    callFormalPara44=callFormalPara();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_callOtherPara_in_callParameter815);
-                    callOtherPara54=callOtherPara();
+                    pushFollow(FOLLOW_callOtherPara_in_callParameter721);
+                    callOtherPara45=callOtherPara();
 
                     state._fsp--;
 
 
 
-                    			retval.name = (callFormalPara53!=null?callFormalPara53.name:null) + (callOtherPara54!=null?callOtherPara54.name:null);
-                    			retval.paranum = (callFormalPara53!=null?callFormalPara53.paranum:0) + (callOtherPara54!=null?callOtherPara54.paranum:0);
-                    			retval.temp1 = (callFormalPara53!=null?callFormalPara53.name:null);
-                    			retval.temp2 = (callOtherPara54!=null?callOtherPara54.othername:null);
+                    			retval.name = (callFormalPara44!=null?callFormalPara44.name:null) + (callOtherPara45!=null?callOtherPara45.name:null);
+                    			retval.paranum = (callFormalPara44!=null?callFormalPara44.paranum:0) + (callOtherPara45!=null?callOtherPara45.paranum:0);
+                    			retval.temp1 = (callFormalPara44!=null?callFormalPara44.name:null);
+                    			retval.temp2 = (callOtherPara45!=null?callOtherPara45.othername:null);
                     		
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:444:4: 
+                    // src\\qsort.g:413:4: 
                     {
 
                     			retval.name = "";
@@ -2190,13 +1967,13 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callFormalPara"
-    // src\\qsort.g:450:1: callFormalPara returns [String name, int paranum] : exprvalue ;
+    // src\\qsort.g:419:1: callFormalPara returns [String name, int paranum] : exprvalue ;
     public final qsortParser.callFormalPara_return callFormalPara() throws RecognitionException {
         qsortParser.callFormalPara_return retval = new qsortParser.callFormalPara_return();
         retval.start = input.LT(1);
 
 
-        String exprvalue55 =null;
+        String exprvalue46 =null;
 
 
 
@@ -2204,17 +1981,17 @@ public class qsortParser extends Parser {
         	retval.paranum = 0;
 
         try {
-            // src\\qsort.g:455:2: ( exprvalue )
-            // src\\qsort.g:455:4: exprvalue
+            // src\\qsort.g:424:2: ( exprvalue )
+            // src\\qsort.g:424:4: exprvalue
             {
-            pushFollow(FOLLOW_exprvalue_in_callFormalPara843);
-            exprvalue55=exprvalue();
+            pushFollow(FOLLOW_exprvalue_in_callFormalPara749);
+            exprvalue46=exprvalue();
 
             state._fsp--;
 
 
 
-            			retval.name = exprvalue55;
+            			retval.name = exprvalue46;
             			if(retval.name == "" || retval.name == null)
             				retval.paranum = 0;
             			else
@@ -2248,7 +2025,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "callOtherPara"
-    // src\\qsort.g:465:1: callOtherPara returns [String name, int paranum, String othername] : ( ',' callFormalPara a= callOtherPara |);
+    // src\\qsort.g:434:1: callOtherPara returns [String name, int paranum, String othername] : ( ',' callFormalPara a= callOtherPara |);
     public final qsortParser.callOtherPara_return callOtherPara() throws RecognitionException {
         qsortParser.callOtherPara_return retval = new qsortParser.callOtherPara_return();
         retval.start = input.LT(1);
@@ -2256,7 +2033,7 @@ public class qsortParser extends Parser {
 
         qsortParser.callOtherPara_return a =null;
 
-        qsortParser.callFormalPara_return callFormalPara56 =null;
+        qsortParser.callFormalPara_return callFormalPara47 =null;
 
 
 
@@ -2265,51 +2042,51 @@ public class qsortParser extends Parser {
         	retval.othername = null;
 
         try {
-            // src\\qsort.g:471:2: ( ',' callFormalPara a= callOtherPara |)
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // src\\qsort.g:440:2: ( ',' callFormalPara a= callOtherPara |)
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA12_0==21) ) {
-                alt12=1;
+            if ( (LA11_0==21) ) {
+                alt11=1;
             }
-            else if ( (LA12_0==15) ) {
-                alt12=2;
+            else if ( (LA11_0==15) ) {
+                alt11=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt12) {
+            switch (alt11) {
                 case 1 :
-                    // src\\qsort.g:471:4: ',' callFormalPara a= callOtherPara
+                    // src\\qsort.g:440:4: ',' callFormalPara a= callOtherPara
                     {
-                    match(input,21,FOLLOW_21_in_callOtherPara866); 
+                    match(input,21,FOLLOW_21_in_callOtherPara772); 
 
-                    pushFollow(FOLLOW_callFormalPara_in_callOtherPara868);
-                    callFormalPara56=callFormalPara();
+                    pushFollow(FOLLOW_callFormalPara_in_callOtherPara774);
+                    callFormalPara47=callFormalPara();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_callOtherPara_in_callOtherPara872);
+                    pushFollow(FOLLOW_callOtherPara_in_callOtherPara778);
                     a=callOtherPara();
 
                     state._fsp--;
 
 
 
-                    			retval.name = "," + (callFormalPara56!=null?callFormalPara56.name:null) + (a!=null?a.name:null);
-                    			retval.paranum += (callFormalPara56!=null?callFormalPara56.paranum:0) + (a!=null?a.paranum:0);
-                    			retval.othername = (callFormalPara56!=null?callFormalPara56.name:null);
+                    			retval.name = ", " + (callFormalPara47!=null?callFormalPara47.name:null) + (a!=null?a.name:null);
+                    			retval.paranum += (callFormalPara47!=null?callFormalPara47.paranum:0) + (a!=null?a.paranum:0);
+                    			retval.othername = (callFormalPara47!=null?callFormalPara47.name:null);
                     		
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:477:4: 
+                    // src\\qsort.g:446:4: 
                     {
 
                     			retval.name = "";
@@ -2339,57 +2116,57 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "array"
-    // src\\qsort.g:483:1: array returns [String name] : ( '[' index ']' |);
+    // src\\qsort.g:452:1: array returns [String name] : ( '[' index ']' |);
     public final String array() throws RecognitionException {
         String name = null;
 
 
-        String index57 =null;
+        String index48 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:487:2: ( '[' index ']' |)
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // src\\qsort.g:456:2: ( '[' index ']' |)
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA13_0==34) ) {
-                alt13=1;
+            if ( (LA12_0==34) ) {
+                alt12=1;
             }
-            else if ( ((LA13_0 >= 10 && LA13_0 <= 13)||(LA13_0 >= 15 && LA13_0 <= 24)||(LA13_0 >= 26 && LA13_0 <= 33)||(LA13_0 >= 35 && LA13_0 <= 37)||LA13_0==49) ) {
-                alt13=2;
+            else if ( ((LA12_0 >= 10 && LA12_0 <= 13)||(LA12_0 >= 15 && LA12_0 <= 24)||(LA12_0 >= 26 && LA12_0 <= 33)||(LA12_0 >= 35 && LA12_0 <= 37)||LA12_0==48) ) {
+                alt12=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 12, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt13) {
+            switch (alt12) {
                 case 1 :
-                    // src\\qsort.g:487:4: '[' index ']'
+                    // src\\qsort.g:456:4: '[' index ']'
                     {
-                    match(input,34,FOLLOW_34_in_array900); 
+                    match(input,34,FOLLOW_34_in_array806); 
 
-                    pushFollow(FOLLOW_index_in_array902);
-                    index57=index();
+                    pushFollow(FOLLOW_index_in_array808);
+                    index48=index();
 
                     state._fsp--;
 
 
-                    match(input,35,FOLLOW_35_in_array904); 
+                    match(input,35,FOLLOW_35_in_array810); 
 
-                    name = "[" + index57 + "]";
-                    		 if(index57 == "")
+                    name = "[" + index48 + "]";
+                    		 if(index48 == "")
                     			name = "";
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:491:4: 
+                    // src\\qsort.g:460:4: 
                     {
                     name = "";
 
@@ -2413,51 +2190,51 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "index"
-    // src\\qsort.g:494:1: index returns [String name] : ( exprvalue |);
+    // src\\qsort.g:463:1: index returns [String name] : ( exprvalue |);
     public final String index() throws RecognitionException {
         String name = null;
 
 
-        String exprvalue58 =null;
+        String exprvalue49 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:498:2: ( exprvalue |)
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // src\\qsort.g:467:2: ( exprvalue |)
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( ((LA14_0 >= ID && LA14_0 <= INT)||LA14_0==9||LA14_0==14||LA14_0==22||LA14_0==48) ) {
-                alt14=1;
+            if ( ((LA13_0 >= ID && LA13_0 <= INT)||LA13_0==9||LA13_0==14||LA13_0==22||LA13_0==47) ) {
+                alt13=1;
             }
-            else if ( (LA14_0==35) ) {
-                alt14=2;
+            else if ( (LA13_0==35) ) {
+                alt13=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
-                    // src\\qsort.g:498:4: exprvalue
+                    // src\\qsort.g:467:4: exprvalue
                     {
-                    pushFollow(FOLLOW_exprvalue_in_index932);
-                    exprvalue58=exprvalue();
+                    pushFollow(FOLLOW_exprvalue_in_index838);
+                    exprvalue49=exprvalue();
 
                     state._fsp--;
 
 
-                    name = exprvalue58;
+                    name = exprvalue49;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:500:4: 
+                    // src\\qsort.g:469:4: 
                     {
                     name = "";
 
@@ -2481,7 +2258,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "semiColon"
-    // src\\qsort.g:504:1: semiColon returns [String name] : ( ';' |);
+    // src\\qsort.g:473:1: semiColon returns [String name] : ( ';' |);
     public final String semiColon() throws RecognitionException {
         String name = null;
 
@@ -2490,35 +2267,35 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:508:2: ( ';' |)
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // src\\qsort.g:477:2: ( ';' |)
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA15_0==28) ) {
-                alt15=1;
+            if ( (LA14_0==28) ) {
+                alt14=1;
             }
-            else if ( (LA15_0==EOF||LA15_0==COMMENT||LA15_0==LINE_COMMENT||LA15_0==38||(LA15_0 >= 42 && LA15_0 <= 44)||LA15_0==46) ) {
-                alt15=2;
+            else if ( (LA14_0==EOF||LA14_0==COMMENT||LA14_0==LINE_COMMENT||LA14_0==38||(LA14_0 >= 41 && LA14_0 <= 43)||LA14_0==45) ) {
+                alt14=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt15) {
+            switch (alt14) {
                 case 1 :
-                    // src\\qsort.g:508:4: ';'
+                    // src\\qsort.g:477:4: ';'
                     {
-                    match(input,28,FOLLOW_28_in_semiColon961); 
+                    match(input,28,FOLLOW_28_in_semiColon867); 
 
-                    name = ";";
+                    name = "";
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:510:4: 
+                    // src\\qsort.g:479:4: 
                     {
                     name = "";
 
@@ -2542,53 +2319,53 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "decExpression"
-    // src\\qsort.g:513:1: decExpression returns [String name] : ( '=' exprvalue |);
+    // src\\qsort.g:482:1: decExpression returns [String name] : ( '=' exprvalue |);
     public final String decExpression() throws RecognitionException {
         String name = null;
 
 
-        String exprvalue59 =null;
+        String exprvalue50 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:517:2: ( '=' exprvalue |)
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // src\\qsort.g:486:2: ( '=' exprvalue |)
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA16_0==31) ) {
-                alt16=1;
+            if ( (LA15_0==31) ) {
+                alt15=1;
             }
-            else if ( (LA16_0==28) ) {
-                alt16=2;
+            else if ( (LA15_0==28) ) {
+                alt15=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt16) {
+            switch (alt15) {
                 case 1 :
-                    // src\\qsort.g:517:4: '=' exprvalue
+                    // src\\qsort.g:486:4: '=' exprvalue
                     {
-                    match(input,31,FOLLOW_31_in_decExpression989); 
+                    match(input,31,FOLLOW_31_in_decExpression895); 
 
-                    pushFollow(FOLLOW_exprvalue_in_decExpression991);
-                    exprvalue59=exprvalue();
+                    pushFollow(FOLLOW_exprvalue_in_decExpression897);
+                    exprvalue50=exprvalue();
 
                     state._fsp--;
 
 
-                    name = "=" + exprvalue59;
+                    name = " = " + exprvalue50;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:519:4: 
+                    // src\\qsort.g:488:4: 
                     {
                     name = "";
 
@@ -2612,118 +2389,118 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "exprvalue"
-    // src\\qsort.g:522:1: exprvalue returns [String name] : ( expr | '!' expr | '-' expr | '{' INT ints '}' );
+    // src\\qsort.g:491:1: exprvalue returns [String name] : ( expr | '!' expr | '-' expr | '{' INT ints '}' );
     public final String exprvalue() throws RecognitionException {
         String name = null;
 
 
-        Token INT63=null;
-        String expr60 =null;
+        Token INT54=null;
+        String expr51 =null;
 
-        String expr61 =null;
+        String expr52 =null;
 
-        String expr62 =null;
+        String expr53 =null;
 
-        String ints64 =null;
+        String ints55 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:526:2: ( expr | '!' expr | '-' expr | '{' INT ints '}' )
-            int alt17=4;
+            // src\\qsort.g:495:2: ( expr | '!' expr | '-' expr | '{' INT ints '}' )
+            int alt16=4;
             switch ( input.LA(1) ) {
             case ID:
             case INT:
             case 14:
                 {
-                alt17=1;
+                alt16=1;
                 }
                 break;
             case 9:
                 {
-                alt17=2;
+                alt16=2;
                 }
                 break;
             case 22:
                 {
-                alt17=3;
+                alt16=3;
                 }
                 break;
-            case 48:
+            case 47:
                 {
-                alt17=4;
+                alt16=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
-                    // src\\qsort.g:526:4: expr
+                    // src\\qsort.g:495:4: expr
                     {
-                    pushFollow(FOLLOW_expr_in_exprvalue1019);
-                    expr60=expr();
+                    pushFollow(FOLLOW_expr_in_exprvalue925);
+                    expr51=expr();
 
                     state._fsp--;
 
 
-                    name = expr60;
+                    name = expr51;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:528:4: '!' expr
+                    // src\\qsort.g:497:4: '!' expr
                     {
-                    match(input,9,FOLLOW_9_in_exprvalue1028); 
+                    match(input,9,FOLLOW_9_in_exprvalue934); 
 
-                    pushFollow(FOLLOW_expr_in_exprvalue1030);
-                    expr61=expr();
+                    pushFollow(FOLLOW_expr_in_exprvalue936);
+                    expr52=expr();
 
                     state._fsp--;
 
 
-                    name = "!" + expr61;
+                    name = "!" + expr52;
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:530:4: '-' expr
+                    // src\\qsort.g:499:4: '-' expr
                     {
-                    match(input,22,FOLLOW_22_in_exprvalue1039); 
+                    match(input,22,FOLLOW_22_in_exprvalue945); 
 
-                    pushFollow(FOLLOW_expr_in_exprvalue1041);
-                    expr62=expr();
+                    pushFollow(FOLLOW_expr_in_exprvalue947);
+                    expr53=expr();
 
                     state._fsp--;
 
 
-                    name = "-" + expr62;
+                    name = "-" + expr53;
 
                     }
                     break;
                 case 4 :
-                    // src\\qsort.g:532:4: '{' INT ints '}'
+                    // src\\qsort.g:501:4: '{' INT ints '}'
                     {
-                    match(input,48,FOLLOW_48_in_exprvalue1050); 
+                    match(input,47,FOLLOW_47_in_exprvalue956); 
 
-                    INT63=(Token)match(input,INT,FOLLOW_INT_in_exprvalue1052); 
+                    INT54=(Token)match(input,INT,FOLLOW_INT_in_exprvalue958); 
 
-                    pushFollow(FOLLOW_ints_in_exprvalue1054);
-                    ints64=ints();
+                    pushFollow(FOLLOW_ints_in_exprvalue960);
+                    ints55=ints();
 
                     state._fsp--;
 
 
-                    match(input,50,FOLLOW_50_in_exprvalue1056); 
+                    match(input,49,FOLLOW_49_in_exprvalue962); 
 
-                    name = "[" + (INT63!=null?INT63.getText():null) + ints64 + "]";
+                    name = "[" + (INT54!=null?INT54.getText():null) + ints55 + "]";
 
                     }
                     break;
@@ -2745,36 +2522,36 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "expr"
-    // src\\qsort.g:536:1: expr returns [String name] : formalOperation otherOperation ;
+    // src\\qsort.g:505:1: expr returns [String name] : formalOperation otherOperation ;
     public final String expr() throws RecognitionException {
         String name = null;
 
 
-        String formalOperation65 =null;
+        String formalOperation56 =null;
 
-        String otherOperation66 =null;
+        String otherOperation57 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:540:2: ( formalOperation otherOperation )
-            // src\\qsort.g:540:4: formalOperation otherOperation
+            // src\\qsort.g:509:2: ( formalOperation otherOperation )
+            // src\\qsort.g:509:4: formalOperation otherOperation
             {
-            pushFollow(FOLLOW_formalOperation_in_expr1079);
-            formalOperation65=formalOperation();
+            pushFollow(FOLLOW_formalOperation_in_expr985);
+            formalOperation56=formalOperation();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_otherOperation_in_expr1081);
-            otherOperation66=otherOperation();
+            pushFollow(FOLLOW_otherOperation_in_expr987);
+            otherOperation57=otherOperation();
 
             state._fsp--;
 
 
-            name = formalOperation65 + otherOperation66;
+            name = formalOperation56 + otherOperation57;
 
             }
 
@@ -2794,53 +2571,53 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "formalOperation"
-    // src\\qsort.g:544:1: formalOperation returns [String name] : ( ID array | INT | '(' expr ')' | callFunction | object );
+    // src\\qsort.g:513:1: formalOperation returns [String name] : ( ID array | INT | '(' expr ')' | callFunction | object );
     public final String formalOperation() throws RecognitionException {
         String name = null;
 
 
-        Token ID67=null;
-        Token INT69=null;
-        String array68 =null;
+        Token ID58=null;
+        Token INT60=null;
+        String array59 =null;
 
-        String expr70 =null;
+        String expr61 =null;
 
-        String callFunction71 =null;
+        String callFunction62 =null;
 
-        String object72 =null;
+        String object63 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:548:2: ( ID array | INT | '(' expr ')' | callFunction | object )
-            int alt18=5;
+            // src\\qsort.g:517:2: ( ID array | INT | '(' expr ')' | callFunction | object )
+            int alt17=5;
             switch ( input.LA(1) ) {
             case ID:
                 {
                 switch ( input.LA(2) ) {
                 case 14:
                     {
-                    alt18=4;
+                    alt17=4;
                     }
                     break;
                 case 25:
                     {
-                    int LA18_5 = input.LA(3);
+                    int LA17_5 = input.LA(3);
 
-                    if ( (LA18_5==ID) ) {
-                        int LA18_7 = input.LA(4);
+                    if ( (LA17_5==ID) ) {
+                        int LA17_7 = input.LA(4);
 
-                        if ( (LA18_7==14) ) {
-                            alt18=4;
+                        if ( (LA17_7==14) ) {
+                            alt17=4;
                         }
-                        else if ( ((LA18_7 >= 10 && LA18_7 <= 13)||(LA18_7 >= 15 && LA18_7 <= 24)||(LA18_7 >= 26 && LA18_7 <= 33)||(LA18_7 >= 35 && LA18_7 <= 37)||LA18_7==49) ) {
-                            alt18=5;
+                        else if ( ((LA17_7 >= 10 && LA17_7 <= 13)||(LA17_7 >= 15 && LA17_7 <= 24)||(LA17_7 >= 26 && LA17_7 <= 33)||(LA17_7 >= 35 && LA17_7 <= 37)||LA17_7==48) ) {
+                            alt17=5;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 18, 7, input);
+                                new NoViableAltException("", 17, 7, input);
 
                             throw nvae;
 
@@ -2848,7 +2625,7 @@ public class qsortParser extends Parser {
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 18, 5, input);
+                            new NoViableAltException("", 17, 5, input);
 
                         throw nvae;
 
@@ -2881,14 +2658,14 @@ public class qsortParser extends Parser {
                 case 35:
                 case 36:
                 case 37:
-                case 49:
+                case 48:
                     {
-                    alt18=1;
+                    alt17=1;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 18, 1, input);
+                        new NoViableAltException("", 17, 1, input);
 
                     throw nvae;
 
@@ -2898,87 +2675,87 @@ public class qsortParser extends Parser {
                 break;
             case INT:
                 {
-                alt18=2;
+                alt17=2;
                 }
                 break;
             case 14:
                 {
-                alt18=3;
+                alt17=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
-                    // src\\qsort.g:548:4: ID array
+                    // src\\qsort.g:517:4: ID array
                     {
-                    ID67=(Token)match(input,ID,FOLLOW_ID_in_formalOperation1104); 
+                    ID58=(Token)match(input,ID,FOLLOW_ID_in_formalOperation1010); 
 
-                    pushFollow(FOLLOW_array_in_formalOperation1106);
-                    array68=array();
+                    pushFollow(FOLLOW_array_in_formalOperation1012);
+                    array59=array();
 
                     state._fsp--;
 
 
-                    name = (ID67!=null?ID67.getText():null) + array68;
+                    name = (ID58!=null?ID58.getText():null) + array59;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:550:4: INT
+                    // src\\qsort.g:519:4: INT
                     {
-                    INT69=(Token)match(input,INT,FOLLOW_INT_in_formalOperation1115); 
+                    INT60=(Token)match(input,INT,FOLLOW_INT_in_formalOperation1021); 
 
-                    name = (INT69!=null?INT69.getText():null);
+                    name = (INT60!=null?INT60.getText():null);
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:552:4: '(' expr ')'
+                    // src\\qsort.g:521:4: '(' expr ')'
                     {
-                    match(input,14,FOLLOW_14_in_formalOperation1124); 
+                    match(input,14,FOLLOW_14_in_formalOperation1030); 
 
-                    pushFollow(FOLLOW_expr_in_formalOperation1126);
-                    expr70=expr();
+                    pushFollow(FOLLOW_expr_in_formalOperation1032);
+                    expr61=expr();
 
                     state._fsp--;
 
 
-                    match(input,15,FOLLOW_15_in_formalOperation1128); 
+                    match(input,15,FOLLOW_15_in_formalOperation1034); 
 
-                    name = "(" + expr70 + ")";
+                    name = "(" + expr61 + ")";
 
                     }
                     break;
                 case 4 :
-                    // src\\qsort.g:554:4: callFunction
+                    // src\\qsort.g:523:4: callFunction
                     {
-                    pushFollow(FOLLOW_callFunction_in_formalOperation1137);
-                    callFunction71=callFunction();
+                    pushFollow(FOLLOW_callFunction_in_formalOperation1043);
+                    callFunction62=callFunction();
 
                     state._fsp--;
 
 
-                    name = callFunction71;
+                    name = callFunction62;
 
                     }
                     break;
                 case 5 :
-                    // src\\qsort.g:556:4: object
+                    // src\\qsort.g:525:4: object
                     {
-                    pushFollow(FOLLOW_object_in_formalOperation1146);
-                    object72=object();
+                    pushFollow(FOLLOW_object_in_formalOperation1052);
+                    object63=object();
 
                     state._fsp--;
 
 
-                    name = object72;
+                    name = object63;
 
                     }
                     break;
@@ -3000,26 +2777,26 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "otherOperation"
-    // src\\qsort.g:560:1: otherOperation returns [String name] : ( operator formalOperation a= otherOperation | singleOperator |);
+    // src\\qsort.g:529:1: otherOperation returns [String name] : ( operator formalOperation a= otherOperation | singleOperator |);
     public final String otherOperation() throws RecognitionException {
         String name = null;
 
 
         String a =null;
 
-        String operator73 =null;
+        String operator64 =null;
 
-        String formalOperation74 =null;
+        String formalOperation65 =null;
 
-        String singleOperator75 =null;
+        String singleOperator66 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:564:2: ( operator formalOperation a= otherOperation | singleOperator |)
-            int alt19=3;
+            // src\\qsort.g:533:2: ( operator formalOperation a= otherOperation | singleOperator |)
+            int alt18=3;
             switch ( input.LA(1) ) {
             case 10:
             case 11:
@@ -3040,15 +2817,15 @@ public class qsortParser extends Parser {
             case 33:
             case 36:
             case 37:
-            case 49:
+            case 48:
                 {
-                alt19=1;
+                alt18=1;
                 }
                 break;
             case 19:
             case 23:
                 {
-                alt19=2;
+                alt18=2;
                 }
                 break;
             case 15:
@@ -3056,58 +2833,58 @@ public class qsortParser extends Parser {
             case 28:
             case 35:
                 {
-                alt19=3;
+                alt18=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt19) {
+            switch (alt18) {
                 case 1 :
-                    // src\\qsort.g:564:4: operator formalOperation a= otherOperation
+                    // src\\qsort.g:533:4: operator formalOperation a= otherOperation
                     {
-                    pushFollow(FOLLOW_operator_in_otherOperation1169);
-                    operator73=operator();
+                    pushFollow(FOLLOW_operator_in_otherOperation1075);
+                    operator64=operator();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_formalOperation_in_otherOperation1171);
-                    formalOperation74=formalOperation();
+                    pushFollow(FOLLOW_formalOperation_in_otherOperation1077);
+                    formalOperation65=formalOperation();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_otherOperation_in_otherOperation1175);
+                    pushFollow(FOLLOW_otherOperation_in_otherOperation1081);
                     a=otherOperation();
 
                     state._fsp--;
 
 
-                    name = operator73 + formalOperation74 + a;
+                    name = operator64 + formalOperation65 + a;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:566:4: singleOperator
+                    // src\\qsort.g:535:4: singleOperator
                     {
-                    pushFollow(FOLLOW_singleOperator_in_otherOperation1184);
-                    singleOperator75=singleOperator();
+                    pushFollow(FOLLOW_singleOperator_in_otherOperation1090);
+                    singleOperator66=singleOperator();
 
                     state._fsp--;
 
 
-                    name = singleOperator75;
+                    name = singleOperator66;
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:568:4: 
+                    // src\\qsort.g:537:4: 
                     {
                     name = "";
 
@@ -3131,7 +2908,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "object"
-    // src\\qsort.g:571:1: object returns [String name] : a= ID '.' b= ID ;
+    // src\\qsort.g:540:1: object returns [String name] : a= ID '.' b= ID ;
     public final String object() throws RecognitionException {
         String name = null;
 
@@ -3143,14 +2920,14 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:575:2: (a= ID '.' b= ID )
-            // src\\qsort.g:575:4: a= ID '.' b= ID
+            // src\\qsort.g:544:2: (a= ID '.' b= ID )
+            // src\\qsort.g:544:4: a= ID '.' b= ID
             {
-            a=(Token)match(input,ID,FOLLOW_ID_in_object1214); 
+            a=(Token)match(input,ID,FOLLOW_ID_in_object1120); 
 
-            match(input,25,FOLLOW_25_in_object1216); 
+            match(input,25,FOLLOW_25_in_object1122); 
 
-            b=(Token)match(input,ID,FOLLOW_ID_in_object1220); 
+            b=(Token)match(input,ID,FOLLOW_ID_in_object1126); 
 
             name = (a!=null?a.getText():null) + "." + (b!=null?b.getText():null);
 
@@ -3172,51 +2949,51 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "returnSentence"
-    // src\\qsort.g:579:1: returnSentence returns [String name] : ( exprvalue |);
+    // src\\qsort.g:548:1: returnSentence returns [String name] : ( exprvalue |);
     public final String returnSentence() throws RecognitionException {
         String name = null;
 
 
-        String exprvalue76 =null;
+        String exprvalue67 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:583:2: ( exprvalue |)
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // src\\qsort.g:552:2: ( exprvalue |)
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( ((LA20_0 >= ID && LA20_0 <= INT)||LA20_0==9||LA20_0==14||LA20_0==22||LA20_0==48) ) {
-                alt20=1;
+            if ( ((LA19_0 >= ID && LA19_0 <= INT)||LA19_0==9||LA19_0==14||LA19_0==22||LA19_0==47) ) {
+                alt19=1;
             }
-            else if ( (LA20_0==28) ) {
-                alt20=2;
+            else if ( (LA19_0==28) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt20) {
+            switch (alt19) {
                 case 1 :
-                    // src\\qsort.g:583:4: exprvalue
+                    // src\\qsort.g:552:4: exprvalue
                     {
-                    pushFollow(FOLLOW_exprvalue_in_returnSentence1243);
-                    exprvalue76=exprvalue();
+                    pushFollow(FOLLOW_exprvalue_in_returnSentence1149);
+                    exprvalue67=exprvalue();
 
                     state._fsp--;
 
 
-                    name = exprvalue76;
+                    name = exprvalue67;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:585:4: 
+                    // src\\qsort.g:554:4: 
                     {
                     name = "";
 
@@ -3240,36 +3017,36 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "normalExp"
-    // src\\qsort.g:588:1: normalExp returns [String name] : normalGiveValue otherOperation ;
+    // src\\qsort.g:557:1: normalExp returns [String name] : normalGiveValue otherOperation ;
     public final String normalExp() throws RecognitionException {
         String name = null;
 
 
-        String normalGiveValue77 =null;
+        String normalGiveValue68 =null;
 
-        String otherOperation78 =null;
+        String otherOperation69 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:592:2: ( normalGiveValue otherOperation )
-            // src\\qsort.g:592:4: normalGiveValue otherOperation
+            // src\\qsort.g:561:2: ( normalGiveValue otherOperation )
+            // src\\qsort.g:561:4: normalGiveValue otherOperation
             {
-            pushFollow(FOLLOW_normalGiveValue_in_normalExp1271);
-            normalGiveValue77=normalGiveValue();
+            pushFollow(FOLLOW_normalGiveValue_in_normalExp1177);
+            normalGiveValue68=normalGiveValue();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_otherOperation_in_normalExp1273);
-            otherOperation78=otherOperation();
+            pushFollow(FOLLOW_otherOperation_in_normalExp1179);
+            otherOperation69=otherOperation();
 
             state._fsp--;
 
 
-            name = normalGiveValue77 + otherOperation78;
+            name = normalGiveValue68 + otherOperation69;
 
             }
 
@@ -3289,37 +3066,37 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "normalGiveValue"
-    // src\\qsort.g:596:1: normalGiveValue returns [String name] : ( ID array | object );
+    // src\\qsort.g:565:1: normalGiveValue returns [String name] : ( ID array | object );
     public final String normalGiveValue() throws RecognitionException {
         String name = null;
 
 
-        Token ID79=null;
-        String array80 =null;
+        Token ID70=null;
+        String array71 =null;
 
-        String object81 =null;
+        String object72 =null;
 
 
 
         	name = null;
 
         try {
-            // src\\qsort.g:600:2: ( ID array | object )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // src\\qsort.g:569:2: ( ID array | object )
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA21_0==ID) ) {
-                int LA21_1 = input.LA(2);
+            if ( (LA20_0==ID) ) {
+                int LA20_1 = input.LA(2);
 
-                if ( (LA21_1==25) ) {
-                    alt21=2;
+                if ( (LA20_1==25) ) {
+                    alt20=2;
                 }
-                else if ( ((LA21_1 >= 10 && LA21_1 <= 13)||(LA21_1 >= 15 && LA21_1 <= 20)||(LA21_1 >= 22 && LA21_1 <= 24)||(LA21_1 >= 26 && LA21_1 <= 34)||(LA21_1 >= 36 && LA21_1 <= 37)||LA21_1==49) ) {
-                    alt21=1;
+                else if ( ((LA20_1 >= 10 && LA20_1 <= 13)||(LA20_1 >= 16 && LA20_1 <= 20)||(LA20_1 >= 22 && LA20_1 <= 24)||(LA20_1 >= 26 && LA20_1 <= 34)||(LA20_1 >= 36 && LA20_1 <= 37)||LA20_1==48) ) {
+                    alt20=1;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 21, 1, input);
+                        new NoViableAltException("", 20, 1, input);
 
                     throw nvae;
 
@@ -3327,37 +3104,37 @@ public class qsortParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt21) {
+            switch (alt20) {
                 case 1 :
-                    // src\\qsort.g:600:4: ID array
+                    // src\\qsort.g:569:4: ID array
                     {
-                    ID79=(Token)match(input,ID,FOLLOW_ID_in_normalGiveValue1296); 
+                    ID70=(Token)match(input,ID,FOLLOW_ID_in_normalGiveValue1202); 
 
-                    pushFollow(FOLLOW_array_in_normalGiveValue1298);
-                    array80=array();
+                    pushFollow(FOLLOW_array_in_normalGiveValue1204);
+                    array71=array();
 
                     state._fsp--;
 
 
-                    name = (ID79!=null?ID79.getText():null) + array80;
+                    name = (ID70!=null?ID70.getText():null) + array71;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:602:4: object
+                    // src\\qsort.g:571:4: object
                     {
-                    pushFollow(FOLLOW_object_in_normalGiveValue1307);
-                    object81=object();
+                    pushFollow(FOLLOW_object_in_normalGiveValue1213);
+                    object72=object();
 
                     state._fsp--;
 
 
-                    name = object81;
+                    name = object72;
 
                     }
                     break;
@@ -3379,7 +3156,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "operator"
-    // src\\qsort.g:607:1: operator returns [String name] : ( '+' | '-' | '*' | '/' | '^' | '&' | '&&' | '||' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '=' | '>' | '>=' | '<' | '<=' | '!=' );
+    // src\\qsort.g:576:1: operator returns [String name] : ( '+' | '-' | '*' | '/' | '^' | '&' | '&&' | '||' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '=' | '>' | '>=' | '<' | '<=' | '!=' );
     public final String operator() throws RecognitionException {
         String name = null;
 
@@ -3388,295 +3165,295 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:611:2: ( '+' | '-' | '*' | '/' | '^' | '&' | '&&' | '||' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '=' | '>' | '>=' | '<' | '<=' | '!=' )
-            int alt22=20;
+            // src\\qsort.g:580:2: ( '+' | '-' | '*' | '/' | '^' | '&' | '&&' | '||' | '+=' | '-=' | '*=' | '/=' | '^=' | '&=' | '=' | '>' | '>=' | '<' | '<=' | '!=' )
+            int alt21=20;
             switch ( input.LA(1) ) {
             case 18:
                 {
-                alt22=1;
+                alt21=1;
                 }
                 break;
             case 22:
                 {
-                alt22=2;
+                alt21=2;
                 }
                 break;
             case 16:
                 {
-                alt22=3;
+                alt21=3;
                 }
                 break;
             case 26:
                 {
-                alt22=4;
+                alt21=4;
                 }
                 break;
             case 36:
                 {
-                alt22=5;
+                alt21=5;
                 }
                 break;
             case 12:
                 {
-                alt22=6;
+                alt21=6;
                 }
                 break;
             case 11:
                 {
-                alt22=7;
+                alt21=7;
                 }
                 break;
-            case 49:
+            case 48:
                 {
-                alt22=8;
+                alt21=8;
                 }
                 break;
             case 20:
                 {
-                alt22=9;
+                alt21=9;
                 }
                 break;
             case 24:
                 {
-                alt22=10;
+                alt21=10;
                 }
                 break;
             case 17:
                 {
-                alt22=11;
+                alt21=11;
                 }
                 break;
             case 27:
                 {
-                alt22=12;
+                alt21=12;
                 }
                 break;
             case 37:
                 {
-                alt22=13;
+                alt21=13;
                 }
                 break;
             case 13:
                 {
-                alt22=14;
+                alt21=14;
                 }
                 break;
             case 31:
                 {
-                alt22=15;
+                alt21=15;
                 }
                 break;
             case 32:
                 {
-                alt22=16;
+                alt21=16;
                 }
                 break;
             case 33:
                 {
-                alt22=17;
+                alt21=17;
                 }
                 break;
             case 29:
                 {
-                alt22=18;
+                alt21=18;
                 }
                 break;
             case 30:
                 {
-                alt22=19;
+                alt21=19;
                 }
                 break;
             case 10:
                 {
-                alt22=20;
+                alt21=20;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt22) {
+            switch (alt21) {
                 case 1 :
-                    // src\\qsort.g:611:4: '+'
+                    // src\\qsort.g:580:4: '+'
                     {
-                    match(input,18,FOLLOW_18_in_operator1331); 
+                    match(input,18,FOLLOW_18_in_operator1237); 
 
-                    name = "+";
+                    name = " + ";
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:613:4: '-'
+                    // src\\qsort.g:582:4: '-'
                     {
-                    match(input,22,FOLLOW_22_in_operator1340); 
+                    match(input,22,FOLLOW_22_in_operator1246); 
 
-                    name = "-";
+                    name = " - ";
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:615:4: '*'
+                    // src\\qsort.g:584:4: '*'
                     {
-                    match(input,16,FOLLOW_16_in_operator1349); 
+                    match(input,16,FOLLOW_16_in_operator1255); 
 
-                    name = "*";
+                    name = " * ";
 
                     }
                     break;
                 case 4 :
-                    // src\\qsort.g:617:4: '/'
+                    // src\\qsort.g:586:4: '/'
                     {
-                    match(input,26,FOLLOW_26_in_operator1358); 
+                    match(input,26,FOLLOW_26_in_operator1264); 
 
-                    name = "/";
+                    name = " / ";
 
                     }
                     break;
                 case 5 :
-                    // src\\qsort.g:621:4: '^'
+                    // src\\qsort.g:590:4: '^'
                     {
-                    match(input,36,FOLLOW_36_in_operator1371); 
+                    match(input,36,FOLLOW_36_in_operator1277); 
 
-                    name = "^";
+                    name = " ^ ";
 
                     }
                     break;
                 case 6 :
-                    // src\\qsort.g:623:4: '&'
+                    // src\\qsort.g:592:4: '&'
                     {
-                    match(input,12,FOLLOW_12_in_operator1380); 
+                    match(input,12,FOLLOW_12_in_operator1286); 
 
-                    name = "&";
+                    name = " & ";
 
                     }
                     break;
                 case 7 :
-                    // src\\qsort.g:625:4: '&&'
+                    // src\\qsort.g:594:4: '&&'
                     {
-                    match(input,11,FOLLOW_11_in_operator1389); 
+                    match(input,11,FOLLOW_11_in_operator1295); 
 
-                    name = "&&";
+                    name = " and ";
 
                     }
                     break;
                 case 8 :
-                    // src\\qsort.g:627:4: '||'
+                    // src\\qsort.g:596:4: '||'
                     {
-                    match(input,49,FOLLOW_49_in_operator1398); 
+                    match(input,48,FOLLOW_48_in_operator1304); 
 
-                    name = "||";
+                    name = " or ";
 
                     }
                     break;
                 case 9 :
-                    // src\\qsort.g:629:4: '+='
+                    // src\\qsort.g:598:4: '+='
                     {
-                    match(input,20,FOLLOW_20_in_operator1407); 
+                    match(input,20,FOLLOW_20_in_operator1313); 
 
-                    name = "+=";
+                    name = " += ";
 
                     }
                     break;
                 case 10 :
-                    // src\\qsort.g:631:4: '-='
+                    // src\\qsort.g:600:4: '-='
                     {
-                    match(input,24,FOLLOW_24_in_operator1416); 
+                    match(input,24,FOLLOW_24_in_operator1322); 
 
-                    name = "-=";
+                    name = " -= ";
 
                     }
                     break;
                 case 11 :
-                    // src\\qsort.g:633:4: '*='
+                    // src\\qsort.g:602:4: '*='
                     {
-                    match(input,17,FOLLOW_17_in_operator1425); 
+                    match(input,17,FOLLOW_17_in_operator1331); 
 
-                    name = "*=";
+                    name = " *= ";
 
                     }
                     break;
                 case 12 :
-                    // src\\qsort.g:635:4: '/='
+                    // src\\qsort.g:604:4: '/='
                     {
-                    match(input,27,FOLLOW_27_in_operator1434); 
+                    match(input,27,FOLLOW_27_in_operator1340); 
 
-                    name = "/=";
+                    name = " /= ";
 
                     }
                     break;
                 case 13 :
-                    // src\\qsort.g:639:4: '^='
+                    // src\\qsort.g:608:4: '^='
                     {
-                    match(input,37,FOLLOW_37_in_operator1447); 
+                    match(input,37,FOLLOW_37_in_operator1353); 
 
-                    name = "^=";
+                    name = " ^= ";
 
                     }
                     break;
                 case 14 :
-                    // src\\qsort.g:641:4: '&='
+                    // src\\qsort.g:610:4: '&='
                     {
-                    match(input,13,FOLLOW_13_in_operator1456); 
+                    match(input,13,FOLLOW_13_in_operator1362); 
 
-                    name = "&=";
+                    name = " &= ";
 
                     }
                     break;
                 case 15 :
-                    // src\\qsort.g:643:4: '='
+                    // src\\qsort.g:612:4: '='
                     {
-                    match(input,31,FOLLOW_31_in_operator1465); 
+                    match(input,31,FOLLOW_31_in_operator1371); 
 
-                    name = "=";
+                    name = " = ";
 
                     }
                     break;
                 case 16 :
-                    // src\\qsort.g:645:4: '>'
+                    // src\\qsort.g:614:4: '>'
                     {
-                    match(input,32,FOLLOW_32_in_operator1474); 
+                    match(input,32,FOLLOW_32_in_operator1380); 
 
-                    name = ">";
+                    name = " > ";
 
                     }
                     break;
                 case 17 :
-                    // src\\qsort.g:647:4: '>='
+                    // src\\qsort.g:616:4: '>='
                     {
-                    match(input,33,FOLLOW_33_in_operator1483); 
+                    match(input,33,FOLLOW_33_in_operator1389); 
 
-                    name = ">=";
+                    name = " >= ";
 
                     }
                     break;
                 case 18 :
-                    // src\\qsort.g:649:4: '<'
+                    // src\\qsort.g:618:4: '<'
                     {
-                    match(input,29,FOLLOW_29_in_operator1492); 
+                    match(input,29,FOLLOW_29_in_operator1398); 
 
-                    name = "<";
+                    name = " < ";
 
                     }
                     break;
                 case 19 :
-                    // src\\qsort.g:651:4: '<='
+                    // src\\qsort.g:620:4: '<='
                     {
-                    match(input,30,FOLLOW_30_in_operator1501); 
+                    match(input,30,FOLLOW_30_in_operator1407); 
 
-                    name = "<=";
+                    name = " <= ";
 
                     }
                     break;
                 case 20 :
-                    // src\\qsort.g:653:4: '!='
+                    // src\\qsort.g:622:4: '!='
                     {
-                    match(input,10,FOLLOW_10_in_operator1510); 
+                    match(input,10,FOLLOW_10_in_operator1416); 
 
-                    name = "!=";
+                    name = " != ";
 
                     }
                     break;
@@ -3698,7 +3475,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "singleOperator"
-    // src\\qsort.g:657:1: singleOperator returns [String name] : ( '++' | '--' );
+    // src\\qsort.g:626:1: singleOperator returns [String name] : ( '++' | '--' );
     public final String singleOperator() throws RecognitionException {
         String name = null;
 
@@ -3707,39 +3484,39 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:661:2: ( '++' | '--' )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // src\\qsort.g:630:2: ( '++' | '--' )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA23_0==19) ) {
-                alt23=1;
+            if ( (LA22_0==19) ) {
+                alt22=1;
             }
-            else if ( (LA23_0==23) ) {
-                alt23=2;
+            else if ( (LA22_0==23) ) {
+                alt22=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt23) {
+            switch (alt22) {
                 case 1 :
-                    // src\\qsort.g:661:4: '++'
+                    // src\\qsort.g:630:4: '++'
                     {
-                    match(input,19,FOLLOW_19_in_singleOperator1533); 
+                    match(input,19,FOLLOW_19_in_singleOperator1439); 
 
-                    name = "++";
+                    name = "+= 1";
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:663:4: '--'
+                    // src\\qsort.g:632:4: '--'
                     {
-                    match(input,23,FOLLOW_23_in_singleOperator1542); 
+                    match(input,23,FOLLOW_23_in_singleOperator1448); 
 
-                    name = "--";
+                    name = "-= 1";
 
                     }
                     break;
@@ -3761,12 +3538,12 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "ints"
-    // src\\qsort.g:667:1: ints returns [String name] : ( ',' INT a= ints |);
+    // src\\qsort.g:636:1: ints returns [String name] : ( ',' INT a= ints |);
     public final String ints() throws RecognitionException {
         String name = null;
 
 
-        Token INT82=null;
+        Token INT73=null;
         String a =null;
 
 
@@ -3774,43 +3551,43 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:671:5: ( ',' INT a= ints |)
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // src\\qsort.g:640:5: ( ',' INT a= ints |)
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA24_0==21) ) {
-                alt24=1;
+            if ( (LA23_0==21) ) {
+                alt23=1;
             }
-            else if ( (LA24_0==50) ) {
-                alt24=2;
+            else if ( (LA23_0==49) ) {
+                alt23=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt24) {
+            switch (alt23) {
                 case 1 :
-                    // src\\qsort.g:671:9: ',' INT a= ints
+                    // src\\qsort.g:640:9: ',' INT a= ints
                     {
-                    match(input,21,FOLLOW_21_in_ints1570); 
+                    match(input,21,FOLLOW_21_in_ints1476); 
 
-                    INT82=(Token)match(input,INT,FOLLOW_INT_in_ints1572); 
+                    INT73=(Token)match(input,INT,FOLLOW_INT_in_ints1478); 
 
-                    pushFollow(FOLLOW_ints_in_ints1578);
+                    pushFollow(FOLLOW_ints_in_ints1484);
                     a=ints();
 
                     state._fsp--;
 
 
-                    name = "," + (INT82!=null?INT82.getText():null) + a;
+                    name = ", " + (INT73!=null?INT73.getText():null) + a;
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:673:7: 
+                    // src\\qsort.g:642:7: 
                     {
                     name = "";
 
@@ -3834,7 +3611,7 @@ public class qsortParser extends Parser {
 
 
     // $ANTLR start "type"
-    // src\\qsort.g:677:1: type returns [String name] : ( 'int' | 'char' | 'void' | 'int*' | 'int&' );
+    // src\\qsort.g:646:1: type returns [String name] : ( 'int' | 'char' | 'void' | 'int*' | 'int&' );
     public final String type() throws RecognitionException {
         String name = null;
 
@@ -3843,85 +3620,85 @@ public class qsortParser extends Parser {
         	name = null;
 
         try {
-            // src\\qsort.g:681:2: ( 'int' | 'char' | 'void' | 'int*' | 'int&' )
-            int alt25=5;
+            // src\\qsort.g:650:2: ( 'int' | 'char' | 'void' | 'int*' | 'int&' )
+            int alt24=5;
             switch ( input.LA(1) ) {
-            case 43:
+            case 42:
                 {
-                alt25=1;
+                alt24=1;
                 }
                 break;
             case 38:
                 {
-                alt25=2;
+                alt24=2;
                 }
                 break;
-            case 46:
+            case 45:
                 {
-                alt25=3;
+                alt24=3;
                 }
                 break;
-            case 44:
+            case 43:
                 {
-                alt25=4;
+                alt24=4;
                 }
                 break;
-            case 42:
+            case 41:
                 {
-                alt25=5;
+                alt24=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt25) {
+            switch (alt24) {
                 case 1 :
-                    // src\\qsort.g:681:4: 'int'
+                    // src\\qsort.g:650:4: 'int'
                     {
-                    match(input,43,FOLLOW_43_in_type1614); 
+                    match(input,42,FOLLOW_42_in_type1520); 
 
-                    name = "var";
+                    name = "";
 
                     }
                     break;
                 case 2 :
-                    // src\\qsort.g:683:4: 'char'
+                    // src\\qsort.g:652:4: 'char'
                     {
-                    match(input,38,FOLLOW_38_in_type1623); 
+                    match(input,38,FOLLOW_38_in_type1529); 
 
-                    name = "var";
+                    name = "";
 
                     }
                     break;
                 case 3 :
-                    // src\\qsort.g:685:4: 'void'
+                    // src\\qsort.g:654:4: 'void'
                     {
-                    match(input,46,FOLLOW_46_in_type1632); 
+                    match(input,45,FOLLOW_45_in_type1538); 
 
-                    name = "var";
+                    name = "";
 
                     }
                     break;
                 case 4 :
-                    // src\\qsort.g:687:4: 'int*'
+                    // src\\qsort.g:656:4: 'int*'
                     {
-                    match(input,44,FOLLOW_44_in_type1641); 
+                    match(input,43,FOLLOW_43_in_type1547); 
 
-                    name = "var";
+                    name = "";
 
                     }
                     break;
                 case 5 :
-                    // src\\qsort.g:689:4: 'int&'
+                    // src\\qsort.g:658:4: 'int&'
                     {
-                    match(input,42,FOLLOW_42_in_type1650); 
+                    match(input,41,FOLLOW_41_in_type1556); 
 
-                    name = "int&";
+                    name = "";
 
                     }
                     break;
@@ -3945,9 +3722,9 @@ public class qsortParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_declaration_in_program16 = new BitSet(new long[]{0x00005C4000000090L});
+    public static final BitSet FOLLOW_declaration_in_program16 = new BitSet(new long[]{0x00002E4000000090L});
     public static final BitSet FOLLOW_declarations_in_program18 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaration_in_declarations43 = new BitSet(new long[]{0x00005C4000000090L});
+    public static final BitSet FOLLOW_declaration_in_declarations43 = new BitSet(new long[]{0x00002E4000000090L});
     public static final BitSet FOLLOW_declarations_in_declarations47 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_type_in_declaration83 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_functionVariable_in_declaration85 = new BitSet(new long[]{0x0000000000000002L});
@@ -3955,164 +3732,148 @@ public class qsortParser extends Parser {
     public static final BitSet FOLLOW_COMMENT_in_declaration104 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ifPart_in_ieStat129 = new BitSet(new long[]{0x0000008000000000L});
     public static final BitSet FOLLOW_elsePart_in_ieStat131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ifPart154 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ifPart156 = new BitSet(new long[]{0x0001000000404260L});
+    public static final BitSet FOLLOW_40_in_ifPart154 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ifPart156 = new BitSet(new long[]{0x0000800000404260L});
     public static final BitSet FOLLOW_exprvalue_in_ifPart158 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_ifPart160 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_ifPart162 = new BitSet(new long[]{0x0004FF40000000B0L});
-    public static final BitSet FOLLOW_block_in_ifPart164 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_ifPart166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_elsePart190 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_elsePart192 = new BitSet(new long[]{0x0004FF40000000B0L});
-    public static final BitSet FOLLOW_block_in_elsePart194 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_elsePart196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_forStat224 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_forStat226 = new BitSet(new long[]{0x00005C4080000020L});
-    public static final BitSet FOLLOW_forPara_in_forStat228 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_forStat230 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_expr_in_forStat232 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_forStat234 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_normalExp_in_forStat236 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_forStat238 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_forStat240 = new BitSet(new long[]{0x0004FF40000000B0L});
-    public static final BitSet FOLLOW_block_in_forStat242 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_forStat244 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_decExpression_in_forPara267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_normalExp_in_forPara276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_forPara285 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_normalExp_in_forPara287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_whileStat310 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_whileStat312 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_expr_in_whileStat314 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_whileStat316 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_whileStat318 = new BitSet(new long[]{0x0004FF40000000B0L});
-    public static final BitSet FOLLOW_block_in_whileStat320 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_whileStat322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stat_in_block345 = new BitSet(new long[]{0x0000FF40000000B0L});
-    public static final BitSet FOLLOW_block_in_block349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_stat377 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_decVariable_in_stat379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ieStat_in_stat388 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_forStat_in_stat397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_whileStat_in_stat406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_callFunction_in_stat415 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_stat417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_stat426 = new BitSet(new long[]{0x0001000010404260L});
-    public static final BitSet FOLLOW_returnSentence_in_stat428 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_stat430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_normalExp_in_stat439 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_stat441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LINE_COMMENT_in_stat450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COMMENT_in_stat459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_decFunction_in_functionVariable483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_decVariable_in_functionVariable492 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_decFunctionName_in_decFunction515 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_decFunction517 = new BitSet(new long[]{0x0000FF40000000B0L});
-    public static final BitSet FOLLOW_functionImplement_in_decFunction519 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_decFunction521 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_semiColon_in_decFunction523 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_decFunctionName546 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_decFunctionName548 = new BitSet(new long[]{0x00005C4000008000L});
-    public static final BitSet FOLLOW_decParameter_in_decFunctionName550 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_decFunctionName552 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_decFormalPara_in_decParameter575 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_decOtherPara_in_decParameter577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_decFormalPara606 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_ID_in_decFormalPara608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_decOtherPara631 = new BitSet(new long[]{0x00005C4000000000L});
-    public static final BitSet FOLLOW_decFormalPara_in_decOtherPara633 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_decOtherPara_in_decOtherPara637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_block_in_functionImplement665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_decVariable688 = new BitSet(new long[]{0x0000000490000000L});
-    public static final BitSet FOLLOW_array_in_decVariable690 = new BitSet(new long[]{0x0000000090000000L});
-    public static final BitSet FOLLOW_decExpression_in_decVariable692 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_decVariable694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_callName_in_callFunction717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_callFunction726 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_callFunction728 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_callName_in_callFunction730 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_callName753 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_callName755 = new BitSet(new long[]{0x000100000040C260L});
-    public static final BitSet FOLLOW_callParameter_in_callName757 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_callName759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_callNameInObject782 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_callNameInObject784 = new BitSet(new long[]{0x000100000040C260L});
-    public static final BitSet FOLLOW_callParameter_in_callNameInObject786 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_callNameInObject788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_callFormalPara_in_callParameter813 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_callOtherPara_in_callParameter815 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprvalue_in_callFormalPara843 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_callOtherPara866 = new BitSet(new long[]{0x0001000000404260L});
-    public static final BitSet FOLLOW_callFormalPara_in_callOtherPara868 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_callOtherPara_in_callOtherPara872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_array900 = new BitSet(new long[]{0x0001000800404260L});
-    public static final BitSet FOLLOW_index_in_array902 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_array904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprvalue_in_index932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_semiColon961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_decExpression989 = new BitSet(new long[]{0x0001000000404260L});
-    public static final BitSet FOLLOW_exprvalue_in_decExpression991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_exprvalue1019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_9_in_exprvalue1028 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_expr_in_exprvalue1030 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_exprvalue1039 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_expr_in_exprvalue1041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_exprvalue1050 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_INT_in_exprvalue1052 = new BitSet(new long[]{0x0004000000200000L});
-    public static final BitSet FOLLOW_ints_in_exprvalue1054 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_exprvalue1056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_formalOperation_in_expr1079 = new BitSet(new long[]{0x00020033EDDF3C00L});
-    public static final BitSet FOLLOW_otherOperation_in_expr1081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_formalOperation1104 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_array_in_formalOperation1106 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_formalOperation1115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_formalOperation1124 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_expr_in_formalOperation1126 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_formalOperation1128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_callFunction_in_formalOperation1137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_object_in_formalOperation1146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_operator_in_otherOperation1169 = new BitSet(new long[]{0x0000000000004060L});
-    public static final BitSet FOLLOW_formalOperation_in_otherOperation1171 = new BitSet(new long[]{0x00020033EDDF3C00L});
-    public static final BitSet FOLLOW_otherOperation_in_otherOperation1175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_singleOperator_in_otherOperation1184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_object1214 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_object1216 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_ID_in_object1220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprvalue_in_returnSentence1243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_normalGiveValue_in_normalExp1271 = new BitSet(new long[]{0x00020033EDDF3C00L});
-    public static final BitSet FOLLOW_otherOperation_in_normalExp1273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_normalGiveValue1296 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_array_in_normalGiveValue1298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_object_in_normalGiveValue1307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_operator1331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_operator1340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_operator1349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_operator1358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_operator1371 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_operator1380 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_operator1389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_operator1398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_operator1407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_operator1416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_operator1425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_operator1434 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_operator1447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_operator1456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_operator1465 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_operator1474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_operator1483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_operator1492 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_operator1501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_10_in_operator1510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_singleOperator1533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_singleOperator1542 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ints1570 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_INT_in_ints1572 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_ints_in_ints1578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_type1614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_type1623 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_type1632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_type1641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_type1650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_ifPart160 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_ifPart162 = new BitSet(new long[]{0x00027F40000000B0L});
+    public static final BitSet FOLLOW_block_in_ifPart164 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_ifPart166 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_elsePart190 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_elsePart192 = new BitSet(new long[]{0x00027F40000000B0L});
+    public static final BitSet FOLLOW_block_in_elsePart194 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_elsePart196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_whileStat225 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_whileStat227 = new BitSet(new long[]{0x0000000000004060L});
+    public static final BitSet FOLLOW_expr_in_whileStat229 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_whileStat231 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_whileStat233 = new BitSet(new long[]{0x00027F40000000B0L});
+    public static final BitSet FOLLOW_block_in_whileStat235 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_whileStat237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stat_in_block260 = new BitSet(new long[]{0x00007F40000000B0L});
+    public static final BitSet FOLLOW_block_in_block264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_stat292 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_decVariable_in_stat294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ieStat_in_stat303 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_whileStat_in_stat312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_callFunction_in_stat321 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_stat323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_stat332 = new BitSet(new long[]{0x0000800010404260L});
+    public static final BitSet FOLLOW_returnSentence_in_stat334 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_stat336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_normalExp_in_stat345 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_stat347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LINE_COMMENT_in_stat356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMMENT_in_stat365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_decFunction_in_functionVariable389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_decVariable_in_functionVariable398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_decFunctionName_in_decFunction421 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_decFunction423 = new BitSet(new long[]{0x00007F40000000B0L});
+    public static final BitSet FOLLOW_functionImplement_in_decFunction425 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_decFunction427 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_semiColon_in_decFunction429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_decFunctionName452 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_decFunctionName454 = new BitSet(new long[]{0x00002E4000008000L});
+    public static final BitSet FOLLOW_decParameter_in_decFunctionName456 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_decFunctionName458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_decFormalPara_in_decParameter481 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_decOtherPara_in_decParameter483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_decFormalPara512 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_ID_in_decFormalPara514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_decOtherPara537 = new BitSet(new long[]{0x00002E4000000000L});
+    public static final BitSet FOLLOW_decFormalPara_in_decOtherPara539 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_decOtherPara_in_decOtherPara543 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_block_in_functionImplement571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_decVariable594 = new BitSet(new long[]{0x0000000490000000L});
+    public static final BitSet FOLLOW_array_in_decVariable596 = new BitSet(new long[]{0x0000000090000000L});
+    public static final BitSet FOLLOW_decExpression_in_decVariable598 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_decVariable600 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_callName_in_callFunction623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_callFunction632 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_callFunction634 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_callName_in_callFunction636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_callName659 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_callName661 = new BitSet(new long[]{0x000080000040C260L});
+    public static final BitSet FOLLOW_callParameter_in_callName663 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_callName665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_callNameInObject688 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_callNameInObject690 = new BitSet(new long[]{0x000080000040C260L});
+    public static final BitSet FOLLOW_callParameter_in_callNameInObject692 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_callNameInObject694 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_callFormalPara_in_callParameter719 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_callOtherPara_in_callParameter721 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprvalue_in_callFormalPara749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_callOtherPara772 = new BitSet(new long[]{0x0000800000404260L});
+    public static final BitSet FOLLOW_callFormalPara_in_callOtherPara774 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_callOtherPara_in_callOtherPara778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_array806 = new BitSet(new long[]{0x0000800800404260L});
+    public static final BitSet FOLLOW_index_in_array808 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_array810 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprvalue_in_index838 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_semiColon867 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_decExpression895 = new BitSet(new long[]{0x0000800000404260L});
+    public static final BitSet FOLLOW_exprvalue_in_decExpression897 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_exprvalue925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_9_in_exprvalue934 = new BitSet(new long[]{0x0000000000004060L});
+    public static final BitSet FOLLOW_expr_in_exprvalue936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_exprvalue945 = new BitSet(new long[]{0x0000000000004060L});
+    public static final BitSet FOLLOW_expr_in_exprvalue947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_exprvalue956 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_INT_in_exprvalue958 = new BitSet(new long[]{0x0002000000200000L});
+    public static final BitSet FOLLOW_ints_in_exprvalue960 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_exprvalue962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_formalOperation_in_expr985 = new BitSet(new long[]{0x00010033EDDF3C00L});
+    public static final BitSet FOLLOW_otherOperation_in_expr987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_formalOperation1010 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_array_in_formalOperation1012 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_formalOperation1021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_formalOperation1030 = new BitSet(new long[]{0x0000000000004060L});
+    public static final BitSet FOLLOW_expr_in_formalOperation1032 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_formalOperation1034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_callFunction_in_formalOperation1043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_object_in_formalOperation1052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_operator_in_otherOperation1075 = new BitSet(new long[]{0x0000000000004060L});
+    public static final BitSet FOLLOW_formalOperation_in_otherOperation1077 = new BitSet(new long[]{0x00010033EDDF3C00L});
+    public static final BitSet FOLLOW_otherOperation_in_otherOperation1081 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_singleOperator_in_otherOperation1090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_object1120 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_object1122 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_ID_in_object1126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprvalue_in_returnSentence1149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_normalGiveValue_in_normalExp1177 = new BitSet(new long[]{0x00010033EDDF3C00L});
+    public static final BitSet FOLLOW_otherOperation_in_normalExp1179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_normalGiveValue1202 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_array_in_normalGiveValue1204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_object_in_normalGiveValue1213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_operator1237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_operator1246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_operator1255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_operator1264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_operator1277 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_operator1286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_operator1295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_operator1304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_operator1313 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_operator1322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_operator1331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_operator1340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_operator1353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_operator1362 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_operator1371 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_operator1380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_operator1389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_operator1398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_operator1407 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_10_in_operator1416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_singleOperator1439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_singleOperator1448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ints1476 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_INT_in_ints1478 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_ints_in_ints1484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_type1520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_type1529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_type1538 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_type1547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_type1556 = new BitSet(new long[]{0x0000000000000002L});
 
 }
