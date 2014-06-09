@@ -3,14 +3,30 @@ grammar qsort;
 @members{
 	ArrayList<String> FunctionName = new ArrayList();
 	ArrayList<String> FunctionType = new ArrayList();
-	ArrayList<String> FunctionError = new ArrayList();
 	ArrayList<String> VariableError = new ArrayList();
 	ArrayList<String> ClassError = new ArrayList();
-	ClassStruct CurClass;
 	Variable CurVariable = new Variable();
-	Function CurFunction;
-	
-	boolean isPublic = false;
+
+	class TabController {
+		ArrayList<String> tabList = new ArrayList();
+		public void addTab() {
+			tabList.add("\t");
+		}
+		public void removeTab() {
+			if (tabList.size() == 0) {
+				return;
+			}
+			tabList.remove(tabList.size() - 1);
+		}
+		public String tab() {
+			String temp = "";
+			for (int i = 0; i < tabList.size(); i++) {
+				temp += tabList.get(i);
+			}
+			return temp;
+		}
+	};
+	TabController tabs = new TabController();
 	class Variable
 	{
 		String name;
@@ -50,47 +66,6 @@ program
 				for(String i : VariableError)
 					System.out.println(i);
 			}
-			if(FunctionError.size() != 0)
-			{
-				for(String i : FunctionError)
-				{
-					boolean isFound = false;
-					for(Function j : FunctionList)
-					{
-						if(j.name.equals(i))
-						{
-							isFound = true;
-							break;
-						}
-					}
-					if(!isFound)
-					{
-						System.out.println("Cannot find Function:");
-						System.out.println(i);
-					}
-				}
-					
-			}
-			if(ClassError.size() != 0)
-			{
-				for(String i : ClassError)
-				{
-					boolean isFound = false;
-					for(ClassStruct j : ClassList)
-					{
-						if(j.ClassName.equals(i))
-						{
-							isFound = true;
-							break;
-						}
-					}
-					if(!isFound)
-					{
-						System.out.println("Cannot find class:");
-						System.out.println(i);
-					}
-				}
-			}
 		}
 	;
 
@@ -100,38 +75,18 @@ declarations returns [String name]
 	name = null;
 }
 	: 	declaration a=declarations
-		{$name = $declaration.name + " " + $a.name;}
+		{$name = $declaration.name + "" + $a.name;}
 	|	{$name = "";}
 	;
 
-classDeclaration returns [String name]
-@init{
-	name = null;
-}
-	:	type classFunctionVariable
-		{
-			$name = "\t" + $classFunctionVariable.name + "\n";
-		}
-	|	constructFunction
-		{
-			//$name = $constructFunction.name + "\n";
-			$name = $constructFunction.initial + "\n";
-			CurClass.initial = $constructFunction.initial;
-		}
-	|	LINE_COMMENT 
-		{$name = "";}
-	|	COMMENT 
-		{$name = "";}
-	;
-	
 	
 declaration returns [String name]
 @init{
 	name = null;
 }
-	:	classDefine
-		{$name = $classDefine.name + "\n";}
-	|	type functionVariable
+	:	//classDefine
+		//{$name = $classDefine.name + "\n";} |
+		type functionVariable
 		{
 			$name = $functionVariable.name + "\n";
 			CurVariable.type = $type.name;
@@ -143,120 +98,6 @@ declaration returns [String name]
 		{$name = "";}
 	;
 
-//public
-	
-classDefine returns [String name]
-@init{
-	name = null;
-}
-	:	'class' className classImplement
-		{	
-			$name = "function " + $className.name + $classImplement.para + "\n" + $classImplement.name;
-			ClassList.add(CurClass);
-		}
-	;	
-	
-className returns [String name]
-@init{
-	name = null;
-}
-	:	ID
-		{
-			$name = $ID.text;
-			CurClass = new ClassStruct();
-			CurClass.ClassName = $ID.text;
-		}
-	;
-
-classImplement returns [String name, String para]
-@init{
-	$name = null;
-	$para = "";
-}
-	/*:	'{' privateBlock constructFunction publicBlock '}' ';'
-		{
-			$name = "{\n" + $privateBlock.name + "\n" + $constructFunction.initial  + $publicBlock.name + "};\n";
-			
-		}*/
-	:	'{' classBlock '}' ';'
-		{
-			$name = "{\n" + $classBlock.name + "};\n";
-			$para = CurClass.ConstructFunctionPara;
-		}
-	;
-
-classBlock returns [String name]
-@init{
-	name = null;
-}
-	:	classStat a=classBlock
-		{
-			$name = $classStat.name + $a.name;
-		}
-	|	{
-			$name = "";
-		}
-	;
-
-classStat returns [String name]
-@init{
-	name = null;
-}
-	:	classDeclaration
-		{
-			$name = $classDeclaration.name;
-		}
-	|	'public' ':'
-		{
-			$name = "\n";
-			isPublic = true;
-		}
-	|	'private' ':'
-		{
-			$name = "\n";
-			isPublic = false;
-		}
-	;
-
-constructFunction returns [String name, String para, String initial]
-@init{
-	$name = null;
-	$para = null;
-	$initial = null;
-}
-	:	decFunction
-		{
-			$name = "this." + $decFunction.funname + "=function" + $decFunction.para;
-			$para = $decFunction.justpara;
-			CurClass.ConstructFunctionPara = $para;
-			$initial = $decFunction.initial;
-		}
-	;
-
-constructObject returns [String name]
-@init{
-	name = null;
-}
-	:	ID callNameInObject ';'
-		{
-			$name = "var " + $callNameInObject.var + " = new " +  $ID.text + $callNameInObject.para;
-			String classname = $ID.text;
-			boolean isFound = false;
-			for(ClassStruct i: ClassList)
-			{
-				if(i.ClassName.equals(classname))
-				{
-					isFound = true;
-					break;
-				}
-			}
-			if(!isFound)
-			{
-				if(!ClassError.contains(classname))
-					ClassError.add(classname);
-			}
-		}
-	; 
 
 ieStat returns [String name]
 @init{
@@ -271,7 +112,7 @@ ifPart returns [String name]
 	name = null;
 }
 	:	'if' '(' exprvalue ')' '{' block '}'
-		{$name = "if(" + $exprvalue.name + ")" + "\n\t{\n" +"\t" +  $block.name + "\t}";}
+		{$name = "if " + $exprvalue.name + ":" + "\n" + "\t" +  $block.name + "" + ";";}
 	;
 	
 elsePart returns [String name]
@@ -279,38 +120,21 @@ elsePart returns [String name]
 	name = null;
 }
 	:	'else' '{' block '}'
-		{$name = "else{\n" + $block.name + "\n}";}
+		{$name = "else:\n" + $block.name + ";";}
 	|	{$name = "";}
 	;
 
-forStat returns [String name]
-@init{
-	name = null;
-}
-	:	'for' '(' forPara ';' expr ';' normalExp ')' '{' block '}'
-		{$name = "for(" + $forPara.name + "; " + $expr.name + "; " + $normalExp.name + ")\n\t{\n" + $block.name + "\t}";}
-	;
-
-forPara returns [String name]
-@init{
-	name = null;
-}
-	:	decExpression
-		{$name = $decExpression.name;}
-	|	normalExp
-		{$name = $normalExp.name;}
-	|	type normalExp
-		{
-			$name = $type.name + " " + $normalExp.name;
-		}
-	;
 
 whileStat returns [String name]
 @init{
 	name = null;
 }
 	:	'while' '(' expr ')' '{' block '}'
-		{$name = "while(" + $expr.name + ")\n\t{\n" + $block.name + "\t}";}
+		{
+			
+			$name = "while " + $expr.name + ":\n" + "\t"  + $block.name + "" + ";";
+			
+		}
 	;
 
 block returns [String name]
@@ -319,7 +143,9 @@ block returns [String name]
 }
 	:	stat a=block
 		{$name = $stat.name + $a.name;}
-	|	{$name = "";}
+	|	{
+			$name = "";
+		}
 	;
 
 stat returns [String name]
@@ -328,28 +154,46 @@ stat returns [String name]
 }
 	:	type decVariable
 		{
-			$name = "\t" + $type.name + " " + $decVariable.name + "\n";
+			$name = "\t" + $type.name + "" + $decVariable.name + "\n";
 			CurVariable.type = $type.name;
 			VariableList.add(CurVariable);
+
 		}
-	|	constructObject
-		{$name = "\t" + $constructObject.name + "\n";}
 	|	ieStat
-		{$name = "\t" + $ieStat.name + "\n";}
-	|	forStat
-		{$name = "\t" + $forStat.name + "\n";}
+		{
+			
+			$name = "\t"  + $ieStat.name + "\n";
+			
+		}
 	|	whileStat
-		{$name = "\t" + $whileStat.name + "\n";}
+		{
+			
+			$name = "\t"  + $whileStat.name + "\n";
+			
+		}
 	|	callFunction ';'
-		{$name = "\t" + $callFunction.name + ";\n";}
+		{
+			
+			$name = "\t"  + $callFunction.name + "\n";
+		}
 	|	'return' returnSentence ';'
-		{$name = "\t" + "return " + $returnSentence.name + ";\n";}
+		{
+			
+			$name = "\t"  + "return " + $returnSentence.name + "\n";
+		}
 	|	normalExp ';'
-		{$name = "\t" + $normalExp.name + ";\n";}
+		{
+			
+			$name = "\t"  + $normalExp.name + "\n";
+		}
 	|	LINE_COMMENT
-		{$name = "";}
+		{
+			$name = "";
+		}
 	|	COMMENT 
-		{$name = "";}
+		{
+			$name = "";
+		}
 	;
 
 functionVariable returns [String name]
@@ -357,71 +201,13 @@ functionVariable returns [String name]
 	name = null;
 }
 	:	decFunction
-		{$name = "function " + $decFunction.name;}
+		{$name = "def " + $decFunction.name;}
 	|	decVariable
 		{
-			$name = "var " + $decVariable.name;
+			$name = "" + $decVariable.name;
 		}
 	;
 
-classFunctionVariable returns [String name]
-@init{
-	$name = null;
-}
-	:	decFunction
-		{
-			if(isPublic)
-			{
-				$name = "this." + $decFunction.funname + "=function" + $decFunction.para;
-				Function CurFunction = new Function();
-				CurFunction.name = $decFunction.funname;
-				CurFunction.classStr = CurClass.ClassName;
-				CurFunction.flag = isPublic;
-				CurFunction.paraString = $decFunction.para;
-				String[] tempparas = CurFunction.paraString.split(",");
-				for(String i: tempparas)
-				{
-					CurFunction.paras.add(i);
-				}
-				FunctionList.add(CurFunction);
-			}
-			else
-			{
-				$name = "function " + $decFunction.name;
-				Function CurFunction = new Function();
-				CurFunction.name = $decFunction.funname;
-				CurFunction.classStr = CurClass.ClassName;
-				CurFunction.flag = isPublic;
-				CurFunction.paraString = $decFunction.para;
-				String[] tempparas = CurFunction.paraString.split(",");
-				for(String i: tempparas)
-				{
-					CurFunction.paras.add(i);
-				}
-				FunctionList.add(CurFunction);
-			}
-		}
-	|	decVariable
-		{
-			if(isPublic)
-			{
-				$name = "this." + $decVariable.name;
-				CurVariable = new Variable();
-				CurVariable.name = $decVariable.variableName;
-				CurVariable.classStr = CurClass.ClassName;
-				CurVariable.flag = isPublic;
-			}
-			else
-			{
-				$name = "var " + $decVariable.name;
-				Variable CurVariable = new Variable();
-				CurVariable.name = $decVariable.variableName;
-				CurVariable.classStr = CurClass.ClassName;
-				CurVariable.flag = isPublic;
-			}
-		}
-	;
-	
 decFunction returns [String name, String para, String funname, String initial, String justpara]
 @init{
 	$name = null;
@@ -439,15 +225,15 @@ decFunction returns [String name, String para, String funname, String initial, S
 			
 			if ($decFunctionName.paraType == "int&")
 			{
-				$name = $decFunctionName.name + "\n\t{\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];\n\t}" + $semiColon.name + "\n";
+				$name = $decFunctionName.name + ":\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];" + $semiColon.name + "\n";
 	
-				$para = $decFunctionName.para + "\n\t{\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];\n\t}" + $semiColon.name + "\n";
+				$para = $decFunctionName.para + ":\n" + $functionImplement.name + "\t" + "return [" + $decFunctionName.p + "];" + $semiColon.name + "\n";
 				
 			}
 			else
 			{
-				$name = $decFunctionName.name + "\n{\n" + $functionImplement.name + "}" + $semiColon.name + "\n";
-				$para = $decFunctionName.para + "\n\t{\n" + $functionImplement.name + "\t}" + $semiColon.name + "\n";
+				$name = $decFunctionName.name + ":\n" + $functionImplement.name + ";" + $semiColon.name + "\n";
+				$para = $decFunctionName.para + ":\n" + $functionImplement.name + ";" + $semiColon.name + "\n";
 				
 			}
 			 $funname = $decFunctionName.funname;
@@ -468,10 +254,10 @@ decFunctionName returns [String name, String para, String funname, String ownnam
 	:	ID '(' decParameter ')'
 		{
 			$ownname = $ID.text;
-			$name = $ID.text + "_" + $decParameter.paranum + "(" + $decParameter.name + ")";
+			$name = $ID.text + "(" + $decParameter.name + ")";
 			$para = "(" + $decParameter.name + ")";
 			$p = $decParameter.name;
-			$funname = $ID.text + "_" + $decParameter.paranum;
+			$funname = $ID.text;// + "_" + $decParameter.paranum;
 			$paraType = $decParameter.paraType;
 		}
 	;
@@ -519,7 +305,7 @@ decOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' decFormalPara a=decOtherPara
 		{
-			$name = " ," + $decFormalPara.name + $a.name;
+			$name = ", " + $decFormalPara.name + $a.name;
 			$paranum = $decFormalPara.paranum + $a.paranum;
 			$othername = $decFormalPara.name;
 		}
@@ -547,7 +333,7 @@ decVariable returns [String name, String variableName]
 }
 	:	ID array decExpression ';'
 		{
-			$name = $ID.text + $array.name + $decExpression.name + ";";
+			$name = $ID.text + $array.name + $decExpression.name + "";
 			$variableName = $ID.text + $array.name;
 		}
 	;
@@ -574,40 +360,24 @@ callName returns [String name, String subname]
 			int k  = FunctionName.indexOf($ID.text);
 			int index = 0;
 			boolean isPub = true;
-			boolean isFound = false;
-			for(Function i : FunctionList)
-			{
-				if(i.name.equals($ID.text+ "_" + $callParameter.paranum))
-				{
-					isPub = i.flag;
-					isFound = true;
-					break;
-				}
-				index++;
-			}
-			if(!isFound)
-			{
-				if(!FunctionError.contains($ID.text+ "_" + $callParameter.paranum))
-					FunctionError.add($ID.text+ "_" + $callParameter.paranum);
-			}
 			if ((k >= 0) && (FunctionType.get(k) == "int&"))
 			{
 				if(isPub)
-					$name = "var temp = this." + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 				else
-					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 			}
 			else
 			{
 				if(isPub)
 				{
-					$name = "this." + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = "" + $ID.text + "(" + $callParameter.name + ")";
 				}
 				else
 				{
-					$name = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = $ID.text +  "(" + $callParameter.name + ")";
 				}
-				$subname = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+				$subname = $ID.text +  "(" + $callParameter.name + ")";
 			}
 		}
 	;
@@ -669,7 +439,7 @@ callOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' callFormalPara a=callOtherPara
 		{
-			$name = "," + $callFormalPara.name + $a.name;
+			$name = ", " + $callFormalPara.name + $a.name;
 			$paranum += $callFormalPara.paranum + $a.paranum;
 			$othername = $callFormalPara.name;
 		}
@@ -705,7 +475,7 @@ semiColon returns [String name]
 	name = null;
 }
 	:	';'
-		{$name = ";";}
+		{$name = "";}
 	|	{$name = "";}
 	;
 
@@ -714,7 +484,7 @@ decExpression returns [String name]
 	name = null;
 }
 	:	'=' exprvalue
-		{$name = "=" + $exprvalue.name;}
+		{$name = " = " + $exprvalue.name;}
 	|	{$name = "";}
 	;
 
@@ -729,7 +499,7 @@ exprvalue returns [String name]
 	|	'-' expr
 		{$name = "-" + $expr.name;}
 	|	'{'	INT ints '}'
-		{$name = "new Array(" + $INT.text + $ints.name + ")";}
+		{$name = "[" + $INT.text + $ints.name + "]";}
 	;
 
 expr returns [String name]
@@ -808,49 +578,49 @@ operator returns [String name]
 	name = null;
 }
 	:	'+'
-		{$name = "+";}
+		{$name = " + ";}
 	|	'-'
-		{$name = "-";}
+		{$name = " - ";}
 	|	'*'
-		{$name = "*";}
+		{$name = " * ";}
 	|	'/'
-		{$name = "/";}
+		{$name = " / ";}
 	//|	'%'
 	//	{$name = "%";}
 	|	'^'
-		{$name = "^";}
+		{$name = " ^ ";}
 	|	'&'
-		{$name = "&";}
+		{$name = " & ";}
 	|	'&&'
-		{$name = "&&";}
+		{$name = " and ";}
 	|	'||'
-		{$name = "||";}
+		{$name = " or ";}
 	|	'+='
-		{$name = "+=";}
+		{$name = " += ";}
 	|	'-='
-		{$name = "-=";}
+		{$name = " -= ";}
 	|	'*='
-		{$name = "*=";}
+		{$name = " *= ";}
 	|	'/='
-		{$name = "/=";}
+		{$name = " /= ";}
 	//|	'%='
 	//	{$name = "%=";}
 	|	'^='
-		{$name = "^=";}
+		{$name = " ^= ";}
 	|	'&='
-		{$name = "&=";}
+		{$name = " &= ";}
 	|	'='
-		{$name = "=";}
+		{$name = " = ";}
 	|	'>'
-		{$name = ">";}
+		{$name = " > ";}
 	|	'>='
-		{$name = ">=";}
+		{$name = " >= ";}
 	|	'<'
-		{$name = "<";}
+		{$name = " < ";}
 	|	'<='
-		{$name = "<=";}
+		{$name = " <= ";}
 	|	'!='
-		{$name = "!=";}
+		{$name = " != ";}
 	;
 
 singleOperator returns [String name]
@@ -858,9 +628,9 @@ singleOperator returns [String name]
 	name = null;
 }
 	:	'++'
-		{$name = "++";}
+		{$name = "+= 1";}
 	|	'--'
-		{$name = "--";}
+		{$name = "-= 1";}
 	;
 
 ints returns [String name]
@@ -868,7 +638,7 @@ ints returns [String name]
 	name = null;
 }
     :   ',' INT a = ints
-		{$name = "," + $INT.text + $a.name;}
+		{$name = ", " + $INT.text + $a.name;}
     |	{$name = "";}
     ; 
 
@@ -878,15 +648,15 @@ type returns [String name]
 	name = null;
 }
 	:	'int'
-		{$name = "var";}
+		{$name = "";}
 	|	'char'
-		{$name = "var";}
+		{$name = "";}
 	|	'void'
-		{$name = "var";}
+		{$name = "";}
 	|	'int*'
-		{$name = "var";}
+		{$name = "";}
 	|	'int&'
-		{$name = "int&";}
+		{$name = "";}
 	;
 
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
