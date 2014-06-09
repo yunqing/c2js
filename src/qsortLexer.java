@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src\\qsort.g 2014-06-08 21:25:15
+// $ANTLR 3.4 src\\qsort.g 2014-06-09 00:39:23
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -50,10 +50,6 @@ public class qsortLexer extends Lexer {
     public static final int T__48=48;
     public static final int T__49=49;
     public static final int T__50=50;
-    public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
-    public static final int T__54=54;
     public static final int COMMENT=4;
     public static final int ID=5;
     public static final int INT=6;
@@ -497,10 +493,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:21:7: ( ':' )
-            // src\\qsort.g:21:9: ':'
+            // src\\qsort.g:21:7: ( ';' )
+            // src\\qsort.g:21:9: ';'
             {
-            match(':'); 
+            match(';'); 
 
             }
 
@@ -518,10 +514,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:22:7: ( ';' )
-            // src\\qsort.g:22:9: ';'
+            // src\\qsort.g:22:7: ( '<' )
+            // src\\qsort.g:22:9: '<'
             {
-            match(';'); 
+            match('<'); 
 
             }
 
@@ -539,10 +535,12 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:23:7: ( '<' )
-            // src\\qsort.g:23:9: '<'
+            // src\\qsort.g:23:7: ( '<=' )
+            // src\\qsort.g:23:9: '<='
             {
-            match('<'); 
+            match("<="); 
+
+
 
             }
 
@@ -560,12 +558,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:24:7: ( '<=' )
-            // src\\qsort.g:24:9: '<='
+            // src\\qsort.g:24:7: ( '=' )
+            // src\\qsort.g:24:9: '='
             {
-            match("<="); 
-
-
+            match('='); 
 
             }
 
@@ -583,10 +579,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:25:7: ( '=' )
-            // src\\qsort.g:25:9: '='
+            // src\\qsort.g:25:7: ( '>' )
+            // src\\qsort.g:25:9: '>'
             {
-            match('='); 
+            match('>'); 
 
             }
 
@@ -604,10 +600,12 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:26:7: ( '>' )
-            // src\\qsort.g:26:9: '>'
+            // src\\qsort.g:26:7: ( '>=' )
+            // src\\qsort.g:26:9: '>='
             {
-            match('>'); 
+            match(">="); 
+
+
 
             }
 
@@ -625,12 +623,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:27:7: ( '>=' )
-            // src\\qsort.g:27:9: '>='
+            // src\\qsort.g:27:7: ( '[' )
+            // src\\qsort.g:27:9: '['
             {
-            match(">="); 
-
-
+            match('['); 
 
             }
 
@@ -648,10 +644,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:28:7: ( '[' )
-            // src\\qsort.g:28:9: '['
+            // src\\qsort.g:28:7: ( ']' )
+            // src\\qsort.g:28:9: ']'
             {
-            match('['); 
+            match(']'); 
 
             }
 
@@ -669,10 +665,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:29:7: ( ']' )
-            // src\\qsort.g:29:9: ']'
+            // src\\qsort.g:29:7: ( '^' )
+            // src\\qsort.g:29:9: '^'
             {
-            match(']'); 
+            match('^'); 
 
             }
 
@@ -690,10 +686,12 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:30:7: ( '^' )
-            // src\\qsort.g:30:9: '^'
+            // src\\qsort.g:30:7: ( '^=' )
+            // src\\qsort.g:30:9: '^='
             {
-            match('^'); 
+            match("^="); 
+
+
 
             }
 
@@ -711,10 +709,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:31:7: ( '^=' )
-            // src\\qsort.g:31:9: '^='
+            // src\\qsort.g:31:7: ( 'char' )
+            // src\\qsort.g:31:9: 'char'
             {
-            match("^="); 
+            match("char"); 
 
 
 
@@ -734,10 +732,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:32:7: ( 'char' )
-            // src\\qsort.g:32:9: 'char'
+            // src\\qsort.g:32:7: ( 'else' )
+            // src\\qsort.g:32:9: 'else'
             {
-            match("char"); 
+            match("else"); 
 
 
 
@@ -757,10 +755,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:33:7: ( 'class' )
-            // src\\qsort.g:33:9: 'class'
+            // src\\qsort.g:33:7: ( 'for' )
+            // src\\qsort.g:33:9: 'for'
             {
-            match("class"); 
+            match("for"); 
 
 
 
@@ -780,10 +778,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:34:7: ( 'else' )
-            // src\\qsort.g:34:9: 'else'
+            // src\\qsort.g:34:7: ( 'if' )
+            // src\\qsort.g:34:9: 'if'
             {
-            match("else"); 
+            match("if"); 
 
 
 
@@ -803,10 +801,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:35:7: ( 'for' )
-            // src\\qsort.g:35:9: 'for'
+            // src\\qsort.g:35:7: ( 'int&' )
+            // src\\qsort.g:35:9: 'int&'
             {
-            match("for"); 
+            match("int&"); 
 
 
 
@@ -826,10 +824,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:36:7: ( 'if' )
-            // src\\qsort.g:36:9: 'if'
+            // src\\qsort.g:36:7: ( 'int' )
+            // src\\qsort.g:36:9: 'int'
             {
-            match("if"); 
+            match("int"); 
 
 
 
@@ -849,10 +847,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:37:7: ( 'int&' )
-            // src\\qsort.g:37:9: 'int&'
+            // src\\qsort.g:37:7: ( 'int*' )
+            // src\\qsort.g:37:9: 'int*'
             {
-            match("int&"); 
+            match("int*"); 
 
 
 
@@ -872,10 +870,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:38:7: ( 'int' )
-            // src\\qsort.g:38:9: 'int'
+            // src\\qsort.g:38:7: ( 'return' )
+            // src\\qsort.g:38:9: 'return'
             {
-            match("int"); 
+            match("return"); 
 
 
 
@@ -895,10 +893,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:39:7: ( 'int*' )
-            // src\\qsort.g:39:9: 'int*'
+            // src\\qsort.g:39:7: ( 'void' )
+            // src\\qsort.g:39:9: 'void'
             {
-            match("int*"); 
+            match("void"); 
 
 
 
@@ -918,10 +916,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:40:7: ( 'private' )
-            // src\\qsort.g:40:9: 'private'
+            // src\\qsort.g:40:7: ( 'while' )
+            // src\\qsort.g:40:9: 'while'
             {
-            match("private"); 
+            match("while"); 
 
 
 
@@ -941,12 +939,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:41:7: ( 'public' )
-            // src\\qsort.g:41:9: 'public'
+            // src\\qsort.g:41:7: ( '{' )
+            // src\\qsort.g:41:9: '{'
             {
-            match("public"); 
-
-
+            match('{'); 
 
             }
 
@@ -964,10 +960,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:42:7: ( 'return' )
-            // src\\qsort.g:42:9: 'return'
+            // src\\qsort.g:42:7: ( '||' )
+            // src\\qsort.g:42:9: '||'
             {
-            match("return"); 
+            match("||"); 
 
 
 
@@ -987,98 +983,8 @@ public class qsortLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:43:7: ( 'void' )
-            // src\\qsort.g:43:9: 'void'
-            {
-            match("void"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__50"
-
-    // $ANTLR start "T__51"
-    public final void mT__51() throws RecognitionException {
-        try {
-            int _type = T__51;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:44:7: ( 'while' )
-            // src\\qsort.g:44:9: 'while'
-            {
-            match("while"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__51"
-
-    // $ANTLR start "T__52"
-    public final void mT__52() throws RecognitionException {
-        try {
-            int _type = T__52;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:45:7: ( '{' )
-            // src\\qsort.g:45:9: '{'
-            {
-            match('{'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__52"
-
-    // $ANTLR start "T__53"
-    public final void mT__53() throws RecognitionException {
-        try {
-            int _type = T__53;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:46:7: ( '||' )
-            // src\\qsort.g:46:9: '||'
-            {
-            match("||"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__53"
-
-    // $ANTLR start "T__54"
-    public final void mT__54() throws RecognitionException {
-        try {
-            int _type = T__54;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:47:7: ( '}' )
-            // src\\qsort.g:47:9: '}'
+            // src\\qsort.g:43:7: ( '}' )
+            // src\\qsort.g:43:9: '}'
             {
             match('}'); 
 
@@ -1091,15 +997,15 @@ public class qsortLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__54"
+    // $ANTLR end "T__50"
 
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:892:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // src\\qsort.g:892:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src\\qsort.g:693:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // src\\qsort.g:693:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1111,7 +1017,7 @@ public class qsortLexer extends Lexer {
             }
 
 
-            // src\\qsort.g:892:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src\\qsort.g:693:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1161,8 +1067,8 @@ public class qsortLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:895:5: ( ( '0' .. '9' ) ( '0' .. '9' )* )
-            // src\\qsort.g:895:7: ( '0' .. '9' ) ( '0' .. '9' )*
+            // src\\qsort.g:696:5: ( ( '0' .. '9' ) ( '0' .. '9' )* )
+            // src\\qsort.g:696:7: ( '0' .. '9' ) ( '0' .. '9' )*
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                 input.consume();
@@ -1174,7 +1080,7 @@ public class qsortLexer extends Lexer {
             }
 
 
-            // src\\qsort.g:895:17: ( '0' .. '9' )*
+            // src\\qsort.g:696:17: ( '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1224,14 +1130,14 @@ public class qsortLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:899:5: ( '/*' ( . )* '*/' )
-            // src\\qsort.g:899:7: '/*' ( . )* '*/'
+            // src\\qsort.g:700:5: ( '/*' ( . )* '*/' )
+            // src\\qsort.g:700:7: '/*' ( . )* '*/'
             {
             match("/*"); 
 
 
 
-            // src\\qsort.g:899:12: ( . )*
+            // src\\qsort.g:700:12: ( . )*
             loop3:
             do {
                 int alt3=2;
@@ -1256,7 +1162,7 @@ public class qsortLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // src\\qsort.g:899:12: .
+            	    // src\\qsort.g:700:12: .
             	    {
             	    matchAny(); 
 
@@ -1291,14 +1197,14 @@ public class qsortLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:903:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            // src\\qsort.g:903:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            // src\\qsort.g:704:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            // src\\qsort.g:704:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             {
             match("//"); 
 
 
 
-            // src\\qsort.g:903:12: (~ ( '\\n' | '\\r' ) )*
+            // src\\qsort.g:704:12: (~ ( '\\n' | '\\r' ) )*
             loop4:
             do {
                 int alt4=2;
@@ -1332,7 +1238,7 @@ public class qsortLexer extends Lexer {
             } while (true);
 
 
-            // src\\qsort.g:903:30: ( '\\r' )?
+            // src\\qsort.g:704:30: ( '\\r' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1341,7 +1247,7 @@ public class qsortLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // src\\qsort.g:903:30: '\\r'
+                    // src\\qsort.g:704:30: '\\r'
                     {
                     match('\r'); 
 
@@ -1371,10 +1277,10 @@ public class qsortLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src\\qsort.g:906:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // src\\qsort.g:906:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // src\\qsort.g:707:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // src\\qsort.g:707:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // src\\qsort.g:906:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // src\\qsort.g:707:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt6=0;
             loop6:
             do {
@@ -1427,8 +1333,8 @@ public class qsortLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // src\\qsort.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | ID | INT | COMMENT | LINE_COMMENT | WS )
-        int alt7=51;
+        // src\\qsort.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | ID | INT | COMMENT | LINE_COMMENT | WS )
+        int alt7=47;
         alt7 = dfa7.predict(input);
         switch (alt7) {
             case 1 :
@@ -1768,71 +1674,39 @@ public class qsortLexer extends Lexer {
                 }
                 break;
             case 43 :
-                // src\\qsort.g:1:261: T__51
-                {
-                mT__51(); 
-
-
-                }
-                break;
-            case 44 :
-                // src\\qsort.g:1:267: T__52
-                {
-                mT__52(); 
-
-
-                }
-                break;
-            case 45 :
-                // src\\qsort.g:1:273: T__53
-                {
-                mT__53(); 
-
-
-                }
-                break;
-            case 46 :
-                // src\\qsort.g:1:279: T__54
-                {
-                mT__54(); 
-
-
-                }
-                break;
-            case 47 :
-                // src\\qsort.g:1:285: ID
+                // src\\qsort.g:1:261: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 48 :
-                // src\\qsort.g:1:288: INT
+            case 44 :
+                // src\\qsort.g:1:264: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 49 :
-                // src\\qsort.g:1:292: COMMENT
+            case 45 :
+                // src\\qsort.g:1:268: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 50 :
-                // src\\qsort.g:1:300: LINE_COMMENT
+            case 46 :
+                // src\\qsort.g:1:276: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
 
                 }
                 break;
-            case 51 :
-                // src\\qsort.g:1:313: WS
+            case 47 :
+                // src\\qsort.g:1:289: WS
                 {
                 mWS(); 
 
@@ -1847,149 +1721,124 @@ public class qsortLexer extends Lexer {
 
     protected DFA7 dfa7 = new DFA7(this);
     static final String DFA7_eotS =
-        "\1\uffff\1\42\1\45\2\uffff\1\47\1\52\1\uffff\1\55\1\uffff\1\61\2"+
-        "\uffff\1\63\1\uffff\1\65\2\uffff\1\67\10\36\35\uffff\4\36\1\107"+
-        "\11\36\1\121\1\uffff\1\124\5\36\1\132\1\36\1\134\4\uffff\3\36\1"+
-        "\140\1\36\1\uffff\1\142\1\uffff\3\36\1\uffff\1\146\1\uffff\1\36"+
-        "\1\150\1\151\1\uffff\1\152\3\uffff";
+        "\1\uffff\1\40\1\43\2\uffff\1\45\1\50\1\uffff\1\53\1\uffff\1\57\1"+
+        "\uffff\1\61\1\uffff\1\63\2\uffff\1\65\7\34\35\uffff\3\34\1\101\6"+
+        "\34\1\110\1\uffff\1\113\3\34\1\117\1\120\4\uffff\1\34\1\122\1\34"+
+        "\2\uffff\1\34\1\uffff\1\125\1\126\2\uffff";
     static final String DFA7_eofS =
-        "\153\uffff";
+        "\127\uffff";
     static final String DFA7_minS =
-        "\1\11\1\75\1\46\2\uffff\1\75\1\53\1\uffff\1\55\1\uffff\1\52\2\uffff"+
-        "\1\75\1\uffff\1\75\2\uffff\1\75\1\150\1\154\1\157\1\146\1\162\1"+
-        "\145\1\157\1\150\35\uffff\2\141\1\163\1\162\1\60\1\164\1\151\1\142"+
-        "\1\164\2\151\1\162\1\163\1\145\1\60\1\uffff\1\46\1\166\1\154\1\165"+
-        "\1\144\1\154\1\60\1\163\1\60\4\uffff\1\141\1\151\1\162\1\60\1\145"+
-        "\1\uffff\1\60\1\uffff\1\164\1\143\1\156\1\uffff\1\60\1\uffff\1\145"+
-        "\2\60\1\uffff\1\60\3\uffff";
+        "\1\11\1\75\1\46\2\uffff\1\75\1\53\1\uffff\1\55\1\uffff\1\52\1\uffff"+
+        "\1\75\1\uffff\1\75\2\uffff\1\75\1\150\1\154\1\157\1\146\1\145\1"+
+        "\157\1\150\35\uffff\1\141\1\163\1\162\1\60\2\164\2\151\1\162\1\145"+
+        "\1\60\1\uffff\1\46\1\165\1\144\1\154\2\60\4\uffff\1\162\1\60\1\145"+
+        "\2\uffff\1\156\1\uffff\2\60\2\uffff";
     static final String DFA7_maxS =
-        "\1\175\2\75\2\uffff\2\75\1\uffff\1\75\1\uffff\1\75\2\uffff\1\75"+
-        "\1\uffff\1\75\2\uffff\1\75\2\154\1\157\1\156\1\165\1\145\1\157\1"+
-        "\150\35\uffff\2\141\1\163\1\162\1\172\1\164\1\151\1\142\1\164\2"+
-        "\151\1\162\1\163\1\145\1\172\1\uffff\1\172\1\166\1\154\1\165\1\144"+
-        "\1\154\1\172\1\163\1\172\4\uffff\1\141\1\151\1\162\1\172\1\145\1"+
-        "\uffff\1\172\1\uffff\1\164\1\143\1\156\1\uffff\1\172\1\uffff\1\145"+
-        "\2\172\1\uffff\1\172\3\uffff";
+        "\1\175\2\75\2\uffff\2\75\1\uffff\1\75\1\uffff\1\75\1\uffff\1\75"+
+        "\1\uffff\1\75\2\uffff\1\75\1\150\1\154\1\157\1\156\1\145\1\157\1"+
+        "\150\35\uffff\1\141\1\163\1\162\1\172\2\164\2\151\1\162\1\145\1"+
+        "\172\1\uffff\1\172\1\165\1\144\1\154\2\172\4\uffff\1\162\1\172\1"+
+        "\145\2\uffff\1\156\1\uffff\2\172\2\uffff";
     static final String DFA7_acceptS =
-        "\3\uffff\1\6\1\7\2\uffff\1\15\1\uffff\1\21\1\uffff\1\24\1\25\1\uffff"+
-        "\1\30\1\uffff\1\33\1\34\11\uffff\1\54\1\55\1\56\1\57\1\60\1\63\1"+
+        "\3\uffff\1\6\1\7\2\uffff\1\15\1\uffff\1\21\1\uffff\1\24\1\uffff"+
+        "\1\27\1\uffff\1\32\1\33\10\uffff\1\50\1\51\1\52\1\53\1\54\1\57\1"+
         "\2\1\1\1\3\1\5\1\4\1\11\1\10\1\13\1\14\1\12\1\17\1\20\1\16\1\23"+
-        "\1\61\1\62\1\22\1\27\1\26\1\32\1\31\1\36\1\35\17\uffff\1\43\11\uffff"+
-        "\1\42\1\44\1\46\1\45\5\uffff\1\37\1\uffff\1\41\3\uffff\1\52\1\uffff"+
-        "\1\40\3\uffff\1\53\1\uffff\1\50\1\51\1\47";
+        "\1\55\1\56\1\22\1\26\1\25\1\31\1\30\1\35\1\34\13\uffff\1\41\6\uffff"+
+        "\1\40\1\42\1\44\1\43\3\uffff\1\36\1\37\1\uffff\1\46\2\uffff\1\47"+
+        "\1\45";
     static final String DFA7_specialS =
-        "\153\uffff}>";
+        "\127\uffff}>";
     static final String[] DFA7_transitionS = {
-            "\2\40\2\uffff\1\40\22\uffff\1\40\1\1\4\uffff\1\2\1\uffff\1\3"+
-            "\1\4\1\5\1\6\1\7\1\10\1\11\1\12\12\37\1\13\1\14\1\15\1\16\1"+
-            "\17\2\uffff\32\36\1\20\1\uffff\1\21\1\22\1\36\1\uffff\2\36\1"+
-            "\23\1\36\1\24\1\25\2\36\1\26\6\36\1\27\1\36\1\30\3\36\1\31\1"+
-            "\32\3\36\1\33\1\34\1\35",
-            "\1\41",
-            "\1\43\26\uffff\1\44",
+            "\2\36\2\uffff\1\36\22\uffff\1\36\1\1\4\uffff\1\2\1\uffff\1\3"+
+            "\1\4\1\5\1\6\1\7\1\10\1\11\1\12\12\35\1\uffff\1\13\1\14\1\15"+
+            "\1\16\2\uffff\32\34\1\17\1\uffff\1\20\1\21\1\34\1\uffff\2\34"+
+            "\1\22\1\34\1\23\1\24\2\34\1\25\10\34\1\26\3\34\1\27\1\30\3\34"+
+            "\1\31\1\32\1\33",
+            "\1\37",
+            "\1\41\26\uffff\1\42",
             "",
             "",
-            "\1\46",
-            "\1\50\21\uffff\1\51",
+            "\1\44",
+            "\1\46\21\uffff\1\47",
             "",
-            "\1\53\17\uffff\1\54",
+            "\1\51\17\uffff\1\52",
             "",
-            "\1\57\4\uffff\1\60\15\uffff\1\56",
+            "\1\55\4\uffff\1\56\15\uffff\1\54",
             "",
+            "\1\60",
             "",
             "\1\62",
             "",
+            "",
             "\1\64",
-            "",
-            "",
             "\1\66",
-            "\1\70\3\uffff\1\71",
-            "\1\72",
+            "\1\67",
+            "\1\70",
+            "\1\71\7\uffff\1\72",
             "\1\73",
-            "\1\74\7\uffff\1\75",
-            "\1\76\2\uffff\1\77",
+            "\1\74",
+            "\1\75",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\76",
+            "\1\77",
             "\1\100",
-            "\1\101",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\102",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\103",
             "\1\104",
             "\1\105",
             "\1\106",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\110",
-            "\1\111",
-            "\1\112",
-            "\1\113",
+            "\1\107",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "",
+            "\1\111\3\uffff\1\112\5\uffff\12\34\7\uffff\32\34\4\uffff\1"+
+            "\34\1\uffff\32\34",
             "\1\114",
             "\1\115",
             "\1\116",
-            "\1\117",
-            "\1\120",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
-            "\1\122\3\uffff\1\123\5\uffff\12\36\7\uffff\32\36\4\uffff\1"+
-            "\36\1\uffff\32\36",
-            "\1\125",
-            "\1\126",
-            "\1\127",
-            "\1\130",
-            "\1\131",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\133",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
             "",
             "",
             "",
-            "\1\135",
-            "\1\136",
-            "\1\137",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\141",
+            "\1\121",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\1\123",
             "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
-            "\1\143",
-            "\1\144",
-            "\1\145",
+            "\1\124",
             "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
-            "\1\147",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
             ""
     };
@@ -2024,7 +1873,7 @@ public class qsortLexer extends Lexer {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | ID | INT | COMMENT | LINE_COMMENT | WS );";
+            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | ID | INT | COMMENT | LINE_COMMENT | WS );";
         }
     }
  
