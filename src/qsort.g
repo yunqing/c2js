@@ -75,7 +75,7 @@ declarations returns [String name]
 	name = null;
 }
 	: 	declaration a=declarations
-		{$name = $declaration.name + " " + $a.name;}
+		{$name = $declaration.name + "" + $a.name;}
 	|	{$name = "";}
 	;
 
@@ -285,10 +285,10 @@ decFunctionName returns [String name, String para, String funname, String ownnam
 	:	ID '(' decParameter ')'
 		{
 			$ownname = $ID.text;
-			$name = $ID.text + "_" + $decParameter.paranum + "(" + $decParameter.name + ")";
+			$name = $ID.text + "(" + $decParameter.name + ")";
 			$para = "(" + $decParameter.name + ")";
 			$p = $decParameter.name;
-			$funname = $ID.text + "_" + $decParameter.paranum;
+			$funname = $ID.text;// + "_" + $decParameter.paranum;
 			$paraType = $decParameter.paraType;
 		}
 	;
@@ -336,7 +336,7 @@ decOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' decFormalPara a=decOtherPara
 		{
-			$name = " ," + $decFormalPara.name + $a.name;
+			$name = ", " + $decFormalPara.name + $a.name;
 			$paranum = $decFormalPara.paranum + $a.paranum;
 			$othername = $decFormalPara.name;
 		}
@@ -394,21 +394,21 @@ callName returns [String name, String subname]
 			if ((k >= 0) && (FunctionType.get(k) == "int&"))
 			{
 				if(isPub)
-					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 				else
-					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 			}
 			else
 			{
 				if(isPub)
 				{
-					$name = "" + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = "" + $ID.text + "(" + $callParameter.name + ")";
 				}
 				else
 				{
-					$name = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = $ID.text + "(" + $callParameter.name + ")";
 				}
-				$subname = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+				$subname = $ID.text + "(" + $callParameter.name + ")";
 			}
 		}
 	;
@@ -470,7 +470,7 @@ callOtherPara returns [String name, int paranum, String othername]
 }
 	:	',' callFormalPara a=callOtherPara
 		{
-			$name = "," + $callFormalPara.name + $a.name;
+			$name = ", " + $callFormalPara.name + $a.name;
 			$paranum += $callFormalPara.paranum + $a.paranum;
 			$othername = $callFormalPara.name;
 		}
@@ -515,7 +515,7 @@ decExpression returns [String name]
 	name = null;
 }
 	:	'=' exprvalue
-		{$name = "=" + $exprvalue.name;}
+		{$name = " = " + $exprvalue.name;}
 	|	{$name = "";}
 	;
 
@@ -609,49 +609,49 @@ operator returns [String name]
 	name = null;
 }
 	:	'+'
-		{$name = "+";}
+		{$name = " + ";}
 	|	'-'
-		{$name = "-";}
+		{$name = " - ";}
 	|	'*'
-		{$name = "*";}
+		{$name = " * ";}
 	|	'/'
-		{$name = "/";}
+		{$name = " / ";}
 	//|	'%'
-	//	{$name = "%";}
+	//	{$name = " % ";}
 	|	'^'
-		{$name = "^";}
+		{$name = " ^ ";}
 	|	'&'
-		{$name = "&";}
+		{$name = " & ";}
 	|	'&&'
-		{$name = "&&";}
+		{$name = " && ";}
 	|	'||'
-		{$name = "||";}
+		{$name = " || ";}
 	|	'+='
-		{$name = "+=";}
+		{$name = " += ";}
 	|	'-='
-		{$name = "-=";}
+		{$name = " -= ";}
 	|	'*='
-		{$name = "*=";}
+		{$name = " *= ";}
 	|	'/='
-		{$name = "/=";}
+		{$name = " /= ";}
 	//|	'%='
 	//	{$name = "%=";}
 	|	'^='
-		{$name = "^=";}
+		{$name = " ^= ";}
 	|	'&='
-		{$name = "&=";}
+		{$name = " &= ";}
 	|	'='
-		{$name = "=";}
+		{$name = " = ";}
 	|	'>'
-		{$name = ">";}
+		{$name = " > ";}
 	|	'>='
-		{$name = ">=";}
+		{$name = " >= ";}
 	|	'<'
-		{$name = "<";}
+		{$name = " < ";}
 	|	'<='
-		{$name = "<=";}
+		{$name = " <= ";}
 	|	'!='
-		{$name = "!=";}
+		{$name = " != ";}
 	;
 
 singleOperator returns [String name]
@@ -669,7 +669,7 @@ ints returns [String name]
 	name = null;
 }
     :   ',' INT a = ints
-		{$name = "," + $INT.text + $a.name;}
+		{$name = ", " + $INT.text + $a.name;}
     |	{$name = "";}
     ; 
 
