@@ -21,7 +21,7 @@ int partition(int* a, int l, int h) {
 }
 
 void qsort(int* a, int low, int high) {
-	int pivotloc;
+	int pivotloc = 0;
 	if (low < high){
 		pivotloc = partition(a, low, high);
 		qsort(a, low, pivotloc - 1);

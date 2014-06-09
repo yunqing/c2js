@@ -257,7 +257,7 @@ decFunctionName returns [String name, String para, String funname, String ownnam
 			$name = $ID.text + "(" + $decParameter.name + ")";
 			$para = "(" + $decParameter.name + ")";
 			$p = $decParameter.name;
-			$funname = $ID.text + "_" + $decParameter.paranum;
+			$funname = $ID.text;// + "_" + $decParameter.paranum;
 			$paraType = $decParameter.paraType;
 		}
 	;
@@ -363,21 +363,21 @@ callName returns [String name, String subname]
 			if ((k >= 0) && (FunctionType.get(k) == "int&"))
 			{
 				if(isPub)
-					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 				else
-					$name = "var temp = " + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
+					$name = "var temp = " + $ID.text + "(" + $callParameter.name + ");\n" + "\t"+ $callParameter.temp1 + "= temp[0];\n" + "\t" +$callParameter.temp2 + "= temp[1]";
 			}
 			else
 			{
 				if(isPub)
 				{
-					$name = "" + $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = "" + $ID.text + "(" + $callParameter.name + ")";
 				}
 				else
 				{
-					$name = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+					$name = $ID.text +  "(" + $callParameter.name + ")";
 				}
-				$subname = $ID.text + "_" + $callParameter.paranum + "(" + $callParameter.name + ")";
+				$subname = $ID.text +  "(" + $callParameter.name + ")";
 			}
 		}
 	;
