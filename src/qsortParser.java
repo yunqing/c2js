@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src\\qsort.g 2014-06-09 17:28:11
+// $ANTLR 3.4 src\\qsort.g 2014-06-09 18:04:00
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -1225,7 +1225,7 @@ public class qsortParser extends Parser {
             			retval.name = (ID26!=null?ID26.getText():null) + "(" + (decParameter27!=null?decParameter27.name:null) + ")";
             			retval.para = "(" + (decParameter27!=null?decParameter27.name:null) + ")";
             			retval.p = (decParameter27!=null?decParameter27.name:null);
-            			retval.funname = (ID26!=null?ID26.getText():null) + "_" + (decParameter27!=null?decParameter27.paranum:0);
+            			retval.funname = (ID26!=null?ID26.getText():null);// + "_" + (decParameter27!=null?decParameter27.paranum:0);
             			retval.paraType = (decParameter27!=null?decParameter27.paraType:null);
             		
 
@@ -1761,21 +1761,21 @@ public class qsortParser extends Parser {
             			if ((k >= 0) && (FunctionType.get(k) == "int&"))
             			{
             				if(isPub)
-            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
             				else
-            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
+            					retval.name = "var temp = " + (ID40!=null?ID40.getText():null) + "(" + (callParameter41!=null?callParameter41.name:null) + ");\n" + "\t"+ (callParameter41!=null?callParameter41.temp1:null) + "= temp[0];\n" + "\t" +(callParameter41!=null?callParameter41.temp2:null) + "= temp[1]";
             			}
             			else
             			{
             				if(isPub)
             				{
-            					retval.name = "" + (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
+            					retval.name = "" + (ID40!=null?ID40.getText():null) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             				}
             				else
             				{
-            					retval.name = (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
+            					retval.name = (ID40!=null?ID40.getText():null) +  "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             				}
-            				retval.subname = (ID40!=null?ID40.getText():null) + "_" + (callParameter41!=null?callParameter41.paranum:0) + "(" + (callParameter41!=null?callParameter41.name:null) + ")";
+            				retval.subname = (ID40!=null?ID40.getText():null) +  "(" + (callParameter41!=null?callParameter41.name:null) + ")";
             			}
             		
 
